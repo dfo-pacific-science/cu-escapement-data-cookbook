@@ -1,46 +1,46 @@
 <!DOCTYPE html>
-<html lang="en" xml:lang="en">
+<html lang="" xml:lang="">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Salmon Escapement Data Guidebook</title>
+  <title>2 Getting Started | Salmon Escapement Data Guidebook</title>
   <meta name="description" content="<p>Cookbook for turning multi-source escapement data across DFO Pacific Region
 Areas into Conservation Unit (CU) time series, paired with the metadata and
 metric settings needed for Wild Salmon Policy (WSP) and Fisheries Act
 reporting.</p>" />
   <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Salmon Escapement Data Guidebook" />
+  <meta property="og:title" content="2 Getting Started | Salmon Escapement Data Guidebook" />
   <meta property="og:type" content="book" />
-
+  
   <meta property="og:description" content="<p>Cookbook for turning multi-source escapement data across DFO Pacific Region
 Areas into Conservation Unit (CU) time series, paired with the metadata and
 metric settings needed for Wild Salmon Policy (WSP) and Fisheries Act
 reporting.</p>" />
-
+  
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Salmon Escapement Data Guidebook" />
-
+  <meta name="twitter:title" content="2 Getting Started | Salmon Escapement Data Guidebook" />
+  
   <meta name="twitter:description" content="<p>Cookbook for turning multi-source escapement data across DFO Pacific Region
 Areas into Conservation Unit (CU) time series, paired with the metadata and
 metric settings needed for Wild Salmon Policy (WSP) and Fisheries Act
 reporting.</p>" />
+  
+
+<meta name="author" content="Your Team" />
 
 
-<meta name="author" content="DFO Pacific Region" />
-
-
-<meta name="date" content="2026-01-28" />
+<meta name="date" content="2026-01-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-
-
-
-<link rel="next" href="introduction.html"/>
+  
+  
+<link rel="prev" href="introduction.html"/>
+<link rel="next" href="step-1-source-data-verification.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -65,7 +65,7 @@ reporting.</p>" />
 
 
 <style type="text/css">
-
+  
   div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 </style>
 
@@ -188,52 +188,73 @@ reporting.</p>" />
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Salmon Escapement Data Guidebook</h1>
-<p class="author"><em>DFO Pacific Region</em></p>
-<p class="date"><em>January 28, 2026</em></p>
-</div>
-<div id="preface" class="section level1 unnumbered hasAnchor">
-<h1>Preface<a href="index.html#preface" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>This cookbook aligns DFO Pacific Region Areas on how to turn escapement inputs
-into Conservation Unit (CU)-based, regionally interoperable time series <strong>and</strong>
-the supporting metadata and metric specifications needed for Wild Salmon Policy
-(WSP) and Fisheries Act reporting.</p>
-<p>It distills two source references:</p>
+<div id="getting-started" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">2</span> Getting Started<a href="getting-started.html#getting-started" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="prerequisites" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Prerequisites<a href="getting-started.html#prerequisites" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
-<li>The Data Standards technical report (processing workflow and case studies)</li>
-<li>The Metadata Questionnaire report (what to document about CUs, datasets,
-benchmarks, and metric settings)</li>
-</ul>
-<p>Use this as the single procedural path. The source reports remain the deep
-reference for rationale and history, while this guide focuses on what to do,
-when, and how to validate the outputs.</p>
-
-<div id="start-here" class="section level2 unnumbered hasAnchor">
-<h2>Start here<a href="index.html#start-here" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<ul>
-<li>If you’re new to the workflow, begin with <strong>Getting Started</strong>: <a href="getting-started.html">Chapter 2</a>.</li>
-<li>If you need the “why” and the vocabulary, see <strong>Introduction</strong>: <a href="introduction.html">Chapter 1</a>.</li>
-<li>If you’re mid-stream and need a decision point, jump to <strong>Checklists and Decision Trees</strong>: <a href="checklists-and-decision-trees.html">Chapter 11</a>.</li>
+<li>Data access: current nuSEDS exports (or equivalent area datasets), CU lookup
+tables, site/survey classifications, benchmark records (if available), and
+prior published time series for comparison.</li>
+<li>Tools: R with <code>bookdown</code>, <code>dplyr</code>, <code>readr</code>, and access to the canonical WSP
+metrics package (<code>WSP-Metrics-Pkg</code>).</li>
+<li>Working directories: standardize <code>DATA/</code>, <code>SPECS/</code>, <code>OUTPUT/</code>, and <code>QC/</code>
+folders to reduce path drift across Areas.</li>
+<li>Vocabularies: stable code lists for estimate type, enhancement level,
+verification status, aggregation flags, and benchmark basis (keep them in
+<code>SPECS/codes.csv</code> so multiple datasets share the same meanings).</li>
 </ul>
 </div>
-
-<div id="downloads" class="section level2 unnumbered hasAnchor">
-<h2>Downloads<a href="index.html#downloads" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<ul>
-<li><a href="salmon-escapement-guidebook.pdf">PDF</a></li>
-<li><a href="salmon-escapement-guidebook.epub">EPUB</a></li>
+<div id="initial-data-inventory-checklist" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Initial data inventory (checklist)<a href="getting-started.html#initial-data-inventory-checklist" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul class="task-list">
+<li><label><input type="checkbox" />List all input sources (nuSEDS extract, local survey files, hatchery
+records, border passage data, exploitation estimates, enhancement flags).</label></li>
+<li><label><input type="checkbox" />Confirm identifiers: CU IDs, POP_ID/site IDs, survey IDs, year formats,
+and units.</label></li>
+<li><label><input type="checkbox" />Capture site/survey classifications: quality class, enhancement level,
+aggregation flags.</label></li>
+<li><label><input type="checkbox" />Locate benchmark information: existing relative/absolute benchmarks,
+cyclic benchmarks if applicable.</label></li>
+<li><label><input type="checkbox" />Retrieve prior outputs for diffing: last published CU time series and
+WSP status outputs (if available).</label></li>
+<li><label><input type="checkbox" />Note refresh cadence per source (e.g., annual nuSEDS export, in-season
+survey feeds) and who to contact when values look wrong.</label></li>
 </ul>
 </div>
+<div id="workspace-setup" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Workspace setup<a href="getting-started.html#workspace-setup" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>Keep raw extracts read-only; work from copies in <code>DATA/raw/</code> and write
+standardized, column-named tables to <code>DATA/processed/</code>.</li>
+<li>Store configurable decisions (filters, exclusions, expansions) in specs YAML
+or CSV files to keep scripts reproducible.</li>
+<li>Version-control specs and scripts; treat rendered outputs as artifacts that
+can be regenerated.</li>
+<li>Keep a <code>QC/</code> folder for plots, diffs, and validation outputs so reviewers know
+what was checked.</li>
+</ul>
+</div>
+<div id="outputs-you-should-have-before-moving-on" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> Outputs you should have before moving on<a href="getting-started.html#outputs-you-should-have-before-moving-on" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>A documented list of inputs with paths and refresh frequency.</li>
+<li>A validated CU/site crosswalk and site/survey classification table.</li>
+<li>A placeholder metadata file capturing CU context and data provenance fields
+(to be completed in Chapter 8).</li>
+<li>A codes file for categorical fields so later steps can reuse the same
+picklists.</li>
+</ul>
 
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="introduction.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="introduction.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="step-1-source-data-verification.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

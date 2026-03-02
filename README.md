@@ -21,7 +21,19 @@ install.packages("bookdown")
 - `_bookdown.yml` — book metadata and chapter ordering (outputs to `docs/` for Pages).
 - `_output.yml` — output formats (gitbook, PDF, EPUB) and basic config.
 - `index.Rmd` — preface/front-matter.
-- `01-*.Rmd`
+- `01-*.Rmd` — numbered cookbook chapters. Current structure:
+  - `01-introduction.Rmd`
+  - `02-getting-started.Rmd`
+  - `03-source-data-verification.Rmd`
+  - `04-site-survey-selection.Rmd`
+  - `05-record-selection.Rmd`
+  - `06-record-processing.Rmd`
+  - `07-estimation.Rmd`
+  - `08-metadata-and-metric-specs.Rmd`
+  - `09-patterns-and-templates.Rmd`
+  - `10-worked-examples.Rmd`
+  - `11-checklists-and-decision-trees.Rmd`
+  - `12-appendix.Rmd`
 - `style.css` — minimal theme overrides for the gitbook build.
 - `docs/` — rendered site for GitHub Pages (keep committed), with `.nojekyll`.
 

@@ -1,46 +1,46 @@
 <!DOCTYPE html>
-<html lang="en" xml:lang="en">
+<html lang="" xml:lang="">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Salmon Escapement Data Guidebook</title>
+  <title>6 Step 4: Record Processing | Salmon Escapement Data Guidebook</title>
   <meta name="description" content="<p>Cookbook for turning multi-source escapement data across DFO Pacific Region
 Areas into Conservation Unit (CU) time series, paired with the metadata and
 metric settings needed for Wild Salmon Policy (WSP) and Fisheries Act
 reporting.</p>" />
   <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Salmon Escapement Data Guidebook" />
+  <meta property="og:title" content="6 Step 4: Record Processing | Salmon Escapement Data Guidebook" />
   <meta property="og:type" content="book" />
-
+  
   <meta property="og:description" content="<p>Cookbook for turning multi-source escapement data across DFO Pacific Region
 Areas into Conservation Unit (CU) time series, paired with the metadata and
 metric settings needed for Wild Salmon Policy (WSP) and Fisheries Act
 reporting.</p>" />
-
+  
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Salmon Escapement Data Guidebook" />
-
+  <meta name="twitter:title" content="6 Step 4: Record Processing | Salmon Escapement Data Guidebook" />
+  
   <meta name="twitter:description" content="<p>Cookbook for turning multi-source escapement data across DFO Pacific Region
 Areas into Conservation Unit (CU) time series, paired with the metadata and
 metric settings needed for Wild Salmon Policy (WSP) and Fisheries Act
 reporting.</p>" />
+  
+
+<meta name="author" content="Your Team" />
 
 
-<meta name="author" content="DFO Pacific Region" />
-
-
-<meta name="date" content="2026-01-28" />
+<meta name="date" content="2026-01-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-
-
-
-<link rel="next" href="introduction.html"/>
+  
+  
+<link rel="prev" href="step-3-record-selection.html"/>
+<link rel="next" href="step-5-estimation.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -65,7 +65,7 @@ reporting.</p>" />
 
 
 <style type="text/css">
-
+  
   div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 </style>
 
@@ -188,52 +188,55 @@ reporting.</p>" />
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Salmon Escapement Data Guidebook</h1>
-<p class="author"><em>DFO Pacific Region</em></p>
-<p class="date"><em>January 28, 2026</em></p>
+<div id="step-4-record-processing" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">6</span> Step 4: Record Processing<a href="step-4-record-processing.html#step-4-record-processing" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="objective-3" class="section level2 hasAnchor" number="6.1">
+<h2><span class="header-section-number">6.1</span> Objective<a href="step-4-record-processing.html#objective-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Transform selected records into analysis-ready values by handling gaps,
+adjustments, and harmonization.</p>
 </div>
-<div id="preface" class="section level1 unnumbered hasAnchor">
-<h1>Preface<a href="index.html#preface" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>This cookbook aligns DFO Pacific Region Areas on how to turn escapement inputs
-into Conservation Unit (CU)-based, regionally interoperable time series <strong>and</strong>
-the supporting metadata and metric specifications needed for Wild Salmon Policy
-(WSP) and Fisheries Act reporting.</p>
-<p>It distills two source references:</p>
+<div id="actions-3" class="section level2 hasAnchor" number="6.2">
+<h2><span class="header-section-number">6.2</span> Actions<a href="step-4-record-processing.html#actions-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
-<li>The Data Standards technical report (processing workflow and case studies)</li>
-<li>The Metadata Questionnaire report (what to document about CUs, datasets,
-benchmarks, and metric settings)</li>
-</ul>
-<p>Use this as the single procedural path. The source reports remain the deep
-reference for rationale and history, while this guide focuses on what to do,
-when, and how to validate the outputs.</p>
-
-<div id="start-here" class="section level2 unnumbered hasAnchor">
-<h2>Start here<a href="index.html#start-here" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<ul>
-<li>If you’re new to the workflow, begin with <strong>Getting Started</strong>: <a href="getting-started.html">Chapter 2</a>.</li>
-<li>If you need the “why” and the vocabulary, see <strong>Introduction</strong>: <a href="introduction.html">Chapter 1</a>.</li>
-<li>If you’re mid-stream and need a decision point, jump to <strong>Checklists and Decision Trees</strong>: <a href="checklists-and-decision-trees.html">Chapter 11</a>.</li>
+<li>Infill missing values where policy allows (e.g., borrow adjacent years,
+apply simple imputation) and flag imputed rows.</li>
+<li>Scale indicator surveys to full CU coverage when appropriate; record
+expansion factors and assumptions.</li>
+<li>Adjust for enhancement where needed (e.g., subtract hatchery components when
+reporting wild escapement).</li>
+<li>Standardize units, rounding, and year definitions (<code>UseYear</code>) to align with
+downstream metric engines.</li>
+<li>Preserve both raw and adjusted values; keep flags for each adjustment step.</li>
 </ul>
 </div>
-
-<div id="downloads" class="section level2 unnumbered hasAnchor">
-<h2>Downloads<a href="index.html#downloads" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="outputs-3" class="section level2 hasAnchor" number="6.3">
+<h2><span class="header-section-number">6.3</span> Outputs<a href="step-4-record-processing.html#outputs-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
-<li><a href="salmon-escapement-guidebook.pdf">PDF</a></li>
-<li><a href="salmon-escapement-guidebook.epub">EPUB</a></li>
+<li>A processed records table with flags for infill, scaling, enhancement
+adjustments, and notes.</li>
+<li>A short processing log describing methods and any deviations from the
+default rules.</li>
 </ul>
 </div>
+<div id="tips-3" class="section level2 hasAnchor" number="6.4">
+<h2><span class="header-section-number">6.4</span> Tips<a href="step-4-record-processing.html#tips-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>Keep processing rules in configuration where possible; avoid hard-coding CU
+exceptions in scripts.</li>
+<li>Preserve pre-processed values for auditability; never overwrite raw columns.</li>
+<li>When applying expansion factors, store the factor source and version (e.g.,
+which lookup or survey year the factor came from).</li>
+</ul>
 
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="introduction.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="step-3-record-selection.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="step-5-estimation.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
