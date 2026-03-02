@@ -1,29 +1,83 @@
 # Checklists and Decision Trees
 
-## Annual update loop
+## Annual release checklist
 
-- [ ] Refresh source extracts and rerun verification checks.
-- [ ] Reapply site/survey selection and note classification changes.
-- [ ] Re-run record selection, processing, and aggregation.
-- [ ] Diff outputs against last release; document changes.
-- [ ] Re-run metrics and regenerate dashboards/plots.
-- [ ] Update metadata and archive prior outputs.
-- [ ] Revalidate code lists (add new values explicitly rather than drifting).
+### A. Data + run control
 
-## Decision trees to include
+- [ ] latest annual inputs staged and logged
+- [ ] pipeline + script version recorded
+- [ ] run log + decision log initialized
 
-- Site inclusion/exclusion (quality and enhancement rules)
-- Infill vs scale (when to expand indicator surveys)
-- Handling enhancement (when to subtract or retain components)
-- Choosing estimation method (direct sum vs indicator vs run reconstruction)
-- Benchmark choice (relative vs absolute vs cyclic)
+### B. Output integrity
 
-## Validation checklists
+- [ ] CU output exists and key uniqueness passes `(CU_ID, Year)`
+- [ ] Pop output exists and key checks pass for the selected schema
+- [ ] required core columns are present
+- [ ] expected year range is present
 
-- Data completeness: years present, NA handling, zero policy documented.
-- Consistency: ID integrity, units, absence of duplicates.
-- Biological plausibility: outlier review, known trends respected.
-- Cross-validation: compare to previous versions and alternate sources where
-  available.
-- Metrics readiness: required benchmark and metric-spec columns populated for
-  each CU and aligned with the chosen time-series (wild vs total).
+### C. Consistency checks
+
+- [ ] prior-release diff reviewed and explained
+- [ ] major missingness changes explained
+- [ ] manual overrides/exceptions documented
+
+### D. Metadata + metrics readiness
+
+- [ ] metadata package updated (`metadata_cu`, `metric_specs`, `codes`)
+- [ ] metric-input fields align with selected data series
+- [ ] unresolved issues assigned owner + follow-up date
+
+## Pop-level key guidance (important)
+
+Do **not** assume a single universal pop key across species.
+
+- Sockeye/Coho may have repeated `Pop_ID` across names or contexts.
+- Use a composite key appropriate to pipeline output (e.g.,
+  `CU_ID + Pop_Name + Year`) unless your species method defines otherwise.
+
+## Decision tree: choose estimation pattern
+
+Start:
+
+- Do you have near-complete direct site coverage with stable inclusion?
+  - Yes → **Direct-sum pattern**
+  - No → continue
+- Do you have defensible expansion factors from indicator systems?
+  - Yes → **Indicator expansion pattern**
+  - No → continue
+- Do you have model/run-reconstruction inputs and method support?
+  - Yes → **Run reconstruction/model-based pattern**
+  - No → **Escalate to custom method design**
+
+## Decision tree: infill vs no infill
+
+- Is infill policy already approved for this CU/species path?
+  - No → do not infill; escalate for policy decision
+  - Yes → continue
+- Are infilled years and method documented and reproducible?
+  - No → stop and document before release
+  - Yes → apply and flag affected rows
+
+## Top failure modes and fixes
+
+- **ID mismatch across files**
+  - Fix: update/confirm crosswalk, rerun joins, recheck keys.
+- **Unexpected year truncation**
+  - Fix: inspect start-year rules and source file coverage.
+- **Large retrospective shifts**
+  - Fix: compare input changes vs method changes; isolate source of delta.
+- **Schema drift in output columns**
+  - Fix: run required-column checks and normalize structure.
+- **Unnamed first column from CSV row names**
+  - Fix: drop blank-column headers before downstream processing.
+
+## Minimum reusable QC snippet
+
+```r
+x <- read.csv("DATA_OUT/<cu-file>.csv")
+if ("" %in% names(x)) x <- x[, names(x) != "", drop = FALSE]
+
+stopifnot(!any(duplicated(x[c("CU_ID", "Year")])))
+req <- c("CU_ID", "CU_Name", "Year", "SpnForAbd_Total", "SpnForTrend_Total")
+stopifnot(all(req %in% names(x)))
+```

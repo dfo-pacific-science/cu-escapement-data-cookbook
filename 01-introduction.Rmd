@@ -2,75 +2,76 @@
 
 ## What this guide is
 
-A task-first cookbook for building CU-level escapement time series and the
-metadata, benchmarks, and metric settings needed to run WSP status metrics.
-Where the source reports explain what was done, this guide shows what to do
-next, with checklists, decision points, and runnable examples.
+A **follow-me cookbook** for building CU-based escapement time series for State
+of the Salmon and Wild Salmon Policy (WSP) workflows.
+
+This guide is intentionally practical: if you are in a known situation, you
+should be able to find the matching pattern and run it step-by-step.
 
 ## Who this is for
 
-- Area data managers and analysts preparing WSP status updates or Fisheries Act
-  reporting
-- Biologists and program leads reviewing CU inputs, benchmarks, and metric
-  settings
-- Analysts onboarding to existing CU workflows who need a single, current
-  reference
+- Biologists and analysts building CU time series for the first time
+- Analysts who already build CU series but want reusable patterns and QA checks
+- Reviewers who need a clear record of what was done and why
+
+## What this guide is not
+
+- Not a full replacement for expert judgement
+- Not a complete catalog of every CU edge case
+- Not a place to reinvent existing code already used in production workflows
 
 ## What you will produce
 
-- A CU-level escapement time series (wild/total as needed) with clear inclusion
-  rules, processing steps, and estimation notes
-- A metadata package that documents CU context, dataset lineage, benchmarks, and
-  WSP metric settings (aligned to a Salmon Data Package, an open format for
-  sharing tabular data with clear code lists and definitions)
-- A repeatable run of WSP status metrics using the canonical metrics engine
-  (`WSP-Metrics-Pkg`) and decision tree
+- CU-level time series outputs (wild/total as needed)
+- Pop-level supporting outputs where applicable
+- Metadata and metric-spec inputs suitable for WSP metric runs
+- A repeatable run log and QC evidence package
 
 ## How to use this cookbook
 
-- New build: follow chapters in order—getting started → five workflow steps →
-  metadata and metric documentation → validation.
-- Annual update: jump to the checklists and decision trees, then re-run the
-  workflow steps affected by new data.
-- Review: use the metadata and metric chapters to verify that required fields
-  and code lists are complete and consistent.
+### Lane A: First-time user (linear)
+
+1. Read **Getting Started** (Chapter 2)
+2. Follow workflow steps (Chapters 3–8)
+3. Pick the nearest **Pattern Card** (Chapter 9)
+4. Run a **Worked Example** (Chapter 10)
+5. Complete checklists (Chapter 11)
+
+### Lane B: Experienced user (lookup)
+
+1. Jump to **Pattern Cards** (Chapter 9)
+2. Run the matching script path
+3. Use checklists (Chapter 11) for release QC
 
 ## Five-step workflow at a glance
 
-1. **Source data verification** — confirm sources, extract latest data, verify
-   identifiers and classifications.
-2. **Site/survey selection** — decide which sites/surveys to include based on
-   quality, enhancement level, and aggregation rules.
-3. **Record selection** — choose the best estimate per CU-year (or survey
-   record) and resolve conflicts.
-4. **Record processing** — infill, scale, adjust for enhancement, and harmonize
-   units.
-5. **Estimation** — aggregate to CU, document methods, and prepare inputs for
-   WSP metrics.
+1. Source data verification
+2. Site/survey selection
+3. Record selection
+4. Record processing
+5. Estimation to CU-level series
 
-## Two parallel tracks
+In parallel: complete metadata + metric specifications so the outputs can be
+reviewed and reused.
 
-- **Build the CU time series** (Chapters 3–7): the five-step workflow derived
-  from the Data Standards report.
-- **Document metadata and metric specs** (Chapter 8): fields and code lists
-  distilled from the Metadata Questionnaire report to make outputs reviewable
-  and machine-checked.
+## Core principles
 
-## Reuse and code packages
+- **Reuse before rewrite**: start from existing species workflows
+- **Document every exception**: no hidden “magic” edits
+- **QC is part of the run**: uniqueness, year coverage, schema checks
+- **Keep decisions explicit**: when to apply a pattern, and when to escalate
 
-- Metrics engine: prefer calling `WSP-Metrics-Pkg` for metric calculations and
-  the rapid-status decision tree instead of re-implementing formulas.
-- Data processing helpers: reuse functions from the Data Standards code (e.g.,
-  site-selection text generation) and generalize into config-driven scripts.
-- Metadata helpers: ingest and summarize questionnaire/coverage data using the
-  patterns from the metadata questionnaire code base.
+## Policy and method anchors
 
-## Conventions and vocabularies
+This cookbook aligns to core WSP references and related status-assessment
+methods:
 
-- Controlled vocabularies (e.g., estimate type, enhancement level, verification
-  status) should map to stable code lists; treat them as canonical picklists for
-  interoperability.
-- The DFO Salmon Ontology supplies shared terms and identifiers; use it for
-  meaning, not for day-to-day data storage.
-- Keep everything CSV-first; when possible, align column definitions and
-  picklists to a Salmon Data Package so outputs can be validated automatically.
+- WSP policy page: `https://www.pac.dfo-mpo.gc.ca/fm-gp/salmon-saumon/wsp-pss/policy-politique-eng.html`
+- CSAS 2007/070 (Conservation Units)
+- CSAS 2009/058 (Indicators and benchmarks)
+- CSAS ScR 2024/004 (Rapid status approximation context)
+
+## Limits and escalation
+
+If your case does not match a pattern card (or fails QC), stop and escalate to a
+custom workflow with documented assumptions.

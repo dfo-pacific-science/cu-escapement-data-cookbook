@@ -2,30 +2,46 @@
 
 ## Objective
 
-Aggregate processed records to CU-level time series and document estimation
-methods.
+Produce final CU-level time series suitable for WSP status workflows and metric
+execution.
 
-## Actions
+## Choose estimation mode
 
-- Choose estimation approach: direct summation, indicator expansion, run
-  reconstruction, or other model-based aggregation.
-- Apply CU-level quality checks: continuity, plausibility, and year-to-year
-  consistency relative to previous releases.
-- Prepare benchmark inputs and metric-ready columns (wild vs total, trend
-  series, `UseYear`, benchmark fields).
-- If using model-based methods, capture control files, priors, and versioned
-  model outputs alongside the derived CU series.
+- **Direct sum**: complete/near-complete site coverage with stable inclusion
+  rules
+- **Indicator expansion**: partial coverage with defensible expansion factors
+- **Run reconstruction/model-based**: where aggregate + stock-share or modeled
+  structure is required
 
-## Outputs
+## Do this exactly
 
-- CU-level escapement time series with method notes.
-- A benchmark-ready dataset for feeding into the WSP metrics engine.
-- A comparison table against prior releases highlighting changes.
+1. generate CU series from processed records
+2. apply start-year policy where defined
+3. attach benchmark/metric-ready fields
+4. compare against prior release and explain differences
 
-## Tips
+## Minimum estimation QC
 
-- Keep estimation choices explicit and link them to benchmark assumptions.
-- When using model-based estimates (e.g., run reconstruction), store control
-  files and model outputs alongside the derived CU series for reproducibility.
-- Record whether outputs are wild-only, total, or mixed and how enhancement was
-  handled so metric settings match the data.
+- uniqueness by `(CU_ID, Year)`
+- plausible continuity (no unexplained structural breaks)
+- expected missingness pattern documented
+- trend/abundance fields aligned with intended metric usage
+
+## Downstream metric execution
+
+Preferred tooling:
+
+- `https://github.com/Pacific-salmon-assess/WSP-Metrics-Pkg`
+- `https://github.com/Pacific-salmon-assess/WSP-Rapid-Status-WorkedExamples`
+
+## Required outputs from Step 5
+
+- `Cleaned_FlatFile_ByCU_<Species>.csv`
+- `release_diff_summary.md`
+- metric-input-ready table(s) or mapping note
+
+## Escalate when
+
+- prior-release diffs are large and unexplained
+- benchmark assumptions differ from metric configuration
+- estimation mode changed relative to prior release

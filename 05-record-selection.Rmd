@@ -2,31 +2,43 @@
 
 ## Objective
 
-Pick the best record per CU-year (or survey event) before any infilling or
-scaling.
+Select the single best usable record per analysis key (typically Pop/CU + Year)
+before processing adjustments.
 
-## Actions
+## Do this exactly
 
-- Define selection hierarchy (e.g., preferred estimate type, preferred survey
-  platform, handling of late/early surveys).
-- Resolve conflicts: duplicates, overlapping surveys, or divergent estimates
-  for the same CU-year.
-- Document exclusions with reasons (e.g., data deficient, suspect expansion,
-  zero-count policy).
-- Capture timing rules (e.g., escapement year vs calendar year) and enforce
-  consistent `UseYear` derivation.
+1. Define a deterministic selection hierarchy.
+2. Apply it consistently.
+3. Capture all overrides in a decision log.
 
-## Outputs
+## Recommended hierarchy template
 
-- A selected-records table with rationale columns.
-- A short note on conflict resolution patterns applied (e.g., earliest
-  credible, highest quality flag).
+1. preferred estimate class/type
+2. preferred survey method/platform
+3. preferred verified source
+4. manual expert override (must be documented)
 
-## Tips
+## Mandatory checks
 
-- Automate tie-breaks in code but leave an override column for documented,
-  manual resolutions.
-- Keep zero-count handling explicit—state whether zeros are biological or
-  missing/unsampled.
-- Store pre-selection and post-selection tables to make diffs easy during
-  review.
+- no duplicate selected rows by key
+- zero-policy applied consistently (biological zero vs missing)
+- year assignment rule is explicit (`UseYear` or equivalent)
+
+## Example implementation patterns
+
+- Coho workflow can be configured to use WSP-only systems vs broader set;
+  document your setting in the run log.
+- Sockeye workflow uses run-timing-aware matching and custom handling for known
+  problematic stream/year combinations; keep these choices explicit.
+
+## Required outputs from Step 3
+
+- `selected_records.csv`
+- `selection_decisions.md`
+- `selection_exclusions.csv`
+
+## Escalate when
+
+- multiple records tie after full hierarchy
+- estimate-class shifts cause large retrospective changes
+- zero/missing ambiguity cannot be resolved from source documentation

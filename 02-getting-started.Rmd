@@ -1,49 +1,90 @@
 # Getting Started
 
-## Prerequisites
+## Quick orientation
 
-- Data access: current nuSEDS exports (or equivalent area datasets), CU lookup
-  tables, site/survey classifications, benchmark records (if available), and
-  prior published time series for comparison.
-- Tools: R with `bookdown`, `dplyr`, `readr`, and access to the canonical WSP
-  metrics package (`WSP-Metrics-Pkg`).
-- Working directories: standardize `DATA/`, `SPECS/`, `OUTPUT/`, and `QC/`
-  folders to reduce path drift across Areas.
-- Vocabularies: stable code lists for estimate type, enhancement level,
-  verification status, aggregation flags, and benchmark basis (keep them in
-  `SPECS/codes.csv` so multiple datasets share the same meanings).
+You will use **this cookbook repo** plus one or more production prep repos.
 
-## Initial data inventory (checklist)
+Think of this guide as orchestration:
 
-- [ ] List all input sources (nuSEDS extract, local survey files, hatchery
-  records, border passage data, exploitation estimates, enhancement flags).
-- [ ] Confirm identifiers: CU IDs, POP_ID/site IDs, survey IDs, year formats,
-  and units.
-- [ ] Capture site/survey classifications: quality class, enhancement level,
-  aggregation flags.
-- [ ] Locate benchmark information: existing relative/absolute benchmarks,
-  cyclic benchmarks if applicable.
-- [ ] Retrieve prior outputs for diffing: last published CU time series and
-  WSP status outputs (if available).
-- [ ] Note refresh cadence per source (e.g., annual nuSEDS export, in-season
-  survey feeds) and who to contact when values look wrong.
+- pattern cards tell you which pipeline to run
+- worked examples show exact run paths
+- checklists protect release quality
 
-## Workspace setup
+## Repository map (what each repo is for)
 
-- Keep raw extracts read-only; work from copies in `DATA/raw/` and write
-  standardized, column-named tables to `DATA/processed/`.
-- Store configurable decisions (filters, exclusions, expansions) in specs YAML
-  or CSV files to keep scripts reproducible.
-- Version-control specs and scripts; treat rendered outputs as artifacts that
-  can be regenerated.
-- Keep a `QC/` folder for plots, diffs, and validation outputs so reviewers know
-  what was checked.
+### Core cookbook
 
-## Outputs you should have before moving on
+- `dfo-pacific-science/cu-escapement-data-cookbook`
+  - Purpose: follow-me procedures, examples, templates, QA
 
-- A documented list of inputs with paths and refresh frequency.
-- A validated CU/site crosswalk and site/survey classification table.
-- A placeholder metadata file capturing CU context and data provenance fields
-  (to be completed in Chapter 8).
-- A codes file for categorical fields so later steps can reuse the same
-  picklists.
+### Species prep repos (primary execution)
+
+- `BronwynMacDonald/FRSK-WSPDataPrep`
+  - Fraser Sockeye CU + pop prep (complex gap-fill logic)
+- `BronwynMacDonald/FRCo-WSPDataPrep`
+  - Interior Fraser Coho prep (CU/pop + brood-year components)
+- `BronwynMacDonald/FRCm-WSPDataPrep`
+  - Lower Fraser Chum prep
+- `BronwynMacDonald/FRPink-WSPDataPrep`
+  - Fraser Pink prep
+
+### Source-report repos (method context)
+
+- `code/Data-Standards`
+  - Source workflow framing and case-study context
+- `code/Metadata-Questionnaire-CU-Series`
+  - Field definitions, metadata examples, summary patterns
+
+### Downstream metrics/tooling repos
+
+- `Pacific-salmon-assess/WSP-Metrics-Pkg`
+- `Pacific-salmon-assess/WSP-Rapid-Status-WorkedExamples`
+
+## Standard prep-repo folders
+
+Most species repos use:
+
+- `DATA_IN/` input files for annual updates
+- `DATA_LOOKUP_FILES/` lookups/crosswalks
+- `DATA_PROCESSING/` intermediates (species-dependent)
+- `DATA_OUT/` deliverable flat files
+- `DATA_TRACKING/` diagnostics and review artifacts
+- `CODE/` executable scripts
+
+## Package bootstrap (R)
+
+Install baseline packages before first run:
+
+```r
+install.packages(c(
+  "dplyr", "tidyr", "stringr", "forcats", "Hmisc", "mgsub", "tidyverse"
+))
+```
+
+Note: some pipelines can run with a subset, but Sockeye/Coho scripts often
+assume the broader set.
+
+## Pre-run checklist (required)
+
+- [ ] Confirm repo access for all required species pipelines
+- [ ] Confirm latest annual files are staged in `DATA_IN/`
+- [ ] Confirm lookup files/crosswalks are current
+- [ ] Confirm target run year and release label
+- [ ] Select the matching Pattern Card (Chapter 9)
+- [ ] Open a run log (Appendix template)
+
+## Minimum key-file checks by species
+
+- Sockeye: `SKAll`, SR file, CU stream maps, expansion-year table
+- Coho: latest IFC data extract, infill exceptions, CU info + POPID lookup
+- Chum: major systems, Harrison summary, extensive pivot, POPID crosswalk
+- Pink: official esc-rec CU file + historical NuSEDS source file
+
+## Before moving to Step 1
+
+You should have:
+
+- selected pipeline(s)
+- staged inputs
+- a destination release folder/branch
+- named reviewer(s) for QC sign-off

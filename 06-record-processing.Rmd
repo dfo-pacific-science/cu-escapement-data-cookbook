@@ -2,32 +2,44 @@
 
 ## Objective
 
-Transform selected records into analysis-ready values by handling gaps,
-adjustments, and harmonization.
+Transform selected records into analysis-ready values with explicit adjustment
+flags.
 
-## Actions
+## Processing actions (in order)
 
-- Infill missing values where policy allows (e.g., borrow adjacent years,
-  apply simple imputation) and flag imputed rows.
-- Scale indicator surveys to full CU coverage when appropriate; record
-  expansion factors and assumptions.
-- Adjust for enhancement where needed (e.g., subtract hatchery components when
-  reporting wild escapement).
-- Standardize units, rounding, and year definitions (`UseYear`) to align with
-  downstream metric engines.
-- Preserve both raw and adjusted values; keep flags for each adjustment step.
+1. Apply approved infill/expansion logic (if applicable).
+2. Apply enhancement handling rules (wild vs total expectations).
+3. Harmonize year fields and numeric formats.
+4. Preserve both raw and adjusted values.
+5. Emit flags for every adjustment type.
 
-## Outputs
+## Species-pattern notes from current production repos
 
-- A processed records table with flags for infill, scaling, enhancement
-  adjustments, and notes.
-- A short processing log describing methods and any deviations from the
-  default rules.
+- Sockeye: multiple CU-specific gap-fill functions exist (regular, Quesnel,
+  Shuswap, Takla-Trem, average-based); treat these as declared methods, not
+  hidden code behavior.
+- Coho: decomposition between hatchery and natural-origin components feeds CU
+  brood-year outputs; verify assumptions remain unchanged.
+- Chum: CU totals are assembled from major systems + Harrison components;
+  document composition assumptions.
+- Pink: official CU series is retained while historical stream context is merged
+  for pop-level representation.
 
-## Tips
+## Minimum output columns (recommended)
 
-- Keep processing rules in configuration where possible; avoid hard-coding CU
-  exceptions in scripts.
-- Preserve pre-processed values for auditability; never overwrite raw columns.
-- When applying expansion factors, store the factor source and version (e.g.,
-  which lookup or survey year the factor came from).
+- key IDs (CU/Pop/year)
+- processed value(s)
+- raw value(s)
+- adjustment flags (infill/scale/enhancement)
+- notes or method tag
+
+## Required outputs from Step 4
+
+- `processed_records.csv`
+- `processing_log.md`
+
+## Escalate when
+
+- adjustments materially change trend interpretation but method justification is
+  weak
+- custom manual fixes are introduced without reproducible rule expression

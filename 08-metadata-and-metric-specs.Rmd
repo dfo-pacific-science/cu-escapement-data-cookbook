@@ -1,49 +1,114 @@
-# Document Metadata and Metric Specifications
+# Step 6: Metadata and Metric Specifications
 
 ## Objective
 
-Capture the CU context, dataset lineage, benchmarks, and WSP metric settings so
-outputs are reviewable and machine-checkable.
+Produce a metadata package that makes each CU time series understandable,
+reviewable, and machine-usable.
 
-## Required fields (from the metadata questionnaire)
+This chapter follows the practical conversion approach from the metadata
+questionnaire distillation: convert question prompts into **how-to-fill
+procedures**.
 
-- CU context: CU ID, name, species, geographic descriptors, biological
-  rationale.
-- Data description: source systems, coverage years, known gaps, zero-count
-  policy, enhancement influence.
-- Benchmarks: relative/absolute benchmarks, cyclic benchmarks if applicable,
-  benchmark methods and citations.
-- Active interventions: hatchery and spawning channel influence, enhancement
-  programs, and how they affect inclusion/adjustments.
-- Status process: decision tree or assessment process used, dates, reviewers.
-- WSP metric specifications: which metrics are active per CU (abundance,
-  trend, percentile), parameter settings, and any overrides.
-- Provenance: data pull dates, script versions, and contacts.
+## Metadata package components
 
-## How to structure metadata files
+At minimum, keep these files together:
 
-- Keep metadata in CSV with clear column names and code lists; align picklists
-  (e.g., enhancement level, verification status) to stable controlled
-  vocabularies.
-- Use a separate codes file for categorical fields; map terms to IRIs from the
-  DFO Salmon Ontology when available to preserve meaning.
-- Include provenance: data pull dates, scripts used, and contact points.
-- For metric specs, mirror the columns expected by `WSP-Metrics-Pkg`
-  (abundance/trend settings, benchmark columns, cycle flags) so files can be
-  used directly.
+- `metadata_cu.csv`
+- `metric_specs.csv`
+- `codes.csv` (controlled vocabularies)
+- `metadata_notes.md`
 
-## Outputs
+## How-to-fill blocks
 
-- A completed metadata table covering the fields above.
-- Code lists for categorical values, stored alongside the metadata.
-- Links from each processing step to the corresponding metadata fields (e.g.,
-  site-selection text, processing notes, benchmark methods).
+### 1) CU context
 
-## Tips
+Fields to fill:
 
-- Treat the metadata table as part of the deliverable, not an afterthought; keep
-  it in version control.
-- Reuse the questionnaire wording as hints/tooltips when building data entry
-  forms or validation scripts.
-- Keep human-readable notes adjacent to coded fields so reviewers can see the
-  rationale without opening scripts.
+- `CU_ID`, `CU_Name`, `Species`
+- verification status + year
+- geographic/life-history context fields used by your program
+
+Rules:
+
+- keep CU ID format stable across all files
+- if aliases exist, document mapping in a lookup field/table
+
+### 2) Data source + calculation method
+
+Fields to fill:
+
+- source system(s)
+- source pull date(s)
+- year coverage
+- spawner estimate type and calculation method
+
+Rules:
+
+- describe method in plain language plus coded value
+- include file/script provenance for reproducibility
+
+### 3) Benchmarks
+
+Fields to fill:
+
+- benchmark type(s)
+- method reference
+- benchmark values and units
+
+Rules:
+
+- include citations or report references for benchmark method
+- distinguish operational benchmark from reference-only benchmark
+
+### 4) Active interventions
+
+Fields to fill:
+
+- hatchery/spawning channel influence flags
+- adjustment notes where interventions affect interpretation
+
+### 5) Metric specifications
+
+Fields to fill:
+
+- enabled metrics by CU
+- metric parameters
+- cycle/benchmark settings where relevant
+
+Rules:
+
+- align column names and coding with the metric engine inputs you will run
+
+### 6) Assessment process + provenance
+
+Fields to fill:
+
+- reviewers/assessment process
+- decision date
+- run identifier
+- script + repo version
+
+## Practical source files for metadata definitions
+
+Local method and field-definition context is available in:
+
+- `code/Metadata-Questionnaire-CU-Series/REPORT/02_questionnaire.Rmd`
+- `code/Metadata-Questionnaire-CU-Series/DATA/From_Google_Sheet/Metadata_FieldDefinitions.csv`
+- `code/Metadata-Questionnaire-CU-Series/DATA/From_Google_Sheet/Metadata_Questions.csv`
+
+Use these to avoid inventing inconsistent labels.
+
+## Minimum validation script
+
+```r
+m <- read.csv("metadata_cu.csv")
+req <- c("CU_ID", "CU_Name", "Species")
+stopifnot(all(req %in% names(m)))
+stopifnot(!any(is.na(m$CU_ID) | m$CU_ID == ""))
+```
+
+## Required outputs from Step 6
+
+- completed metadata + metric specs
+- controlled vocabulary file
+- short note documenting unresolved fields and owners

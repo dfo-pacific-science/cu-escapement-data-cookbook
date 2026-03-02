@@ -2,33 +2,58 @@
 
 ## Objective
 
-Confirm sources, identifiers, and classifications before downstream processing
-so later steps do not rely on mismatched IDs or stale extracts.
+Confirm that inputs are current, identifiable, and interpretable **before** any
+selection or estimation logic.
 
-## Actions
+## Do this exactly
 
-- Verify source provenance: request latest extracts, log source dates, and note
-  any embargoed or draft data.
-- Validate identifiers: CU IDs, POP_ID/site IDs, survey IDs, and species codes;
-  confirm no duplicates or unexpected formats.
-- Check classifications: site type, enhancement level, aggregation flags, and
-  quality ratings; reconcile with the latest lookup tables.
-- Confirm units and measurement basis (wild-only vs total, expanded vs
-  observed).
-- Record zero-policy per source (is zero biological, a missing value, or an
-  unreported survey?).
+1. Build an input inventory (file name, source contact, pull date, run year).
+2. Validate core identifiers:
+   - CU IDs
+   - Pop/site IDs
+   - year fields
+   - species/run-timing fields where applicable
+3. Confirm unit meaning:
+   - wild vs total
+   - expanded vs observed
+   - biological zero vs missing
+4. Record anomalies and owner for resolution.
 
-## Outputs
+## Quick validation script (adapt path as needed)
 
-- A verified source inventory with extract dates and contacts.
-- Cleaned lookup tables for CU/site/survey IDs and classifications.
-- A short verification note (date, scope, anomalies) saved with the data pull.
+```r
+x <- read.csv("DATA_IN/<input-file>.csv")
 
-## Tips
+# Required columns (edit per file)
+required <- c("Year")
+stopifnot(all(required %in% names(x)))
 
-- Use a repeatable script to ingest and validate source extracts; keep the
-  checks lightweight and quick to rerun.
-- Treat any change in classification (e.g., enhancement level) as a trigger to
-  re-review inclusion rules in later steps.
-- Store per-source verification notes in `DATA/verified/` alongside the cleaned
-  extracts for auditability.
+# Year sanity
+stopifnot(!all(is.na(x$Year)))
+
+# Duplicate check on candidate key (edit key fields)
+key <- c("Year")
+if (all(key %in% names(x))) {
+  stopifnot(!any(duplicated(x[key])))
+}
+```
+
+## Species-specific verification notes
+
+- Sockeye: verify timing labels and stream-name consistency against decoder and
+  CU stream lists.
+- Coho: verify tributary naming against POPID lookup before final joins.
+- Chum: verify Harrison + Major systems year alignment before aggregation.
+- Pink: verify official esc-rec year coverage and historical NuSEDS alignment.
+
+## Required outputs from Step 1
+
+- `source-inventory.csv` (or markdown equivalent)
+- `verification-notes.md` with anomalies + decisions
+- list of files approved for Step 2
+
+## Escalate when
+
+- IDs are missing for high-priority records
+- source year ranges conflict across required files
+- a field meaning changed from prior year without documentation

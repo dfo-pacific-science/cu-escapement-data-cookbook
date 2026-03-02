@@ -1,29 +1,40 @@
 ---
 title: "Salmon Escapement Data Guidebook"
-author: "Your Team"
-date: "January 22, 2026"
+author: "DFO Pacific Region"
+date: "March 02, 2026"
 site: bookdown::bookdown_site
 documentclass: book
+lang: en
 description: |
-  Cookbook for turning multi-source escapement data across DFO Pacific Region
-  Areas into Conservation Unit (CU) time series, paired with the metadata and
-  metric settings needed for Wild Salmon Policy (WSP) and Fisheries Act
-  reporting.
+  Follow-me cookbook for turning multi-source escapement data across DFO Pacific
+  Region Areas into Conservation Unit (CU) time series, with metadata and metric
+  settings needed for Wild Salmon Policy (WSP) and Fisheries Act reporting.
 ---
 
 # Preface {-}
 
-This cookbook aligns DFO Pacific Region Areas on how to turn escapement inputs
-into Conservation Unit (CU)-based, regionally interoperable time series **and**
-the supporting metadata and metric specifications needed for Wild Salmon Policy
-(WSP) and Fisheries Act reporting.
+This cookbook is designed as a **practical field manual**:
 
-It distills two source references:
+- first-timers can run a linear workflow
+- experienced analysts can jump directly to pattern cards
 
-- The Data Standards technical report (processing workflow and case studies)
-- The Metadata Questionnaire report (what to document about CUs, datasets,
-  benchmarks, and metric settings)
+It reuses proven workflows from species-specific prep repositories and translates
+them into repeatable “if this, do this” guidance.
 
-Use this as the single procedural path. The source reports remain the deep
-reference for rationale and history, while this guide focuses on what to do,
-when, and how to validate the outputs.
+## Start here
+
+- New to CU time-series work? Start with **Getting Started**: [Chapter 2](getting-started.html)
+- Need the right workflow quickly? Use **Pattern Cards**: [Chapter 9](patterns-and-templates.html)
+- Need a runnable walk-through? Use **Worked Examples**: [Chapter 10](worked-examples.html)
+- Releasing outputs? Run **Validation Checklists**: [Chapter 11](checklists-and-decision-trees.html)
+
+## Scope note
+
+This guide covers common and high-value patterns. It does **not** attempt to
+codify every edge case; when a case falls outside pattern coverage, escalate to
+a documented custom workflow.
+
+## Downloads
+
+- [PDF](salmon-escapement-guidebook.pdf)
+- [EPUB](salmon-escapement-guidebook.epub)

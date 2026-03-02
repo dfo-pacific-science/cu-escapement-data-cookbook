@@ -4,13 +4,13 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>6 Step 4: Record Processing | Salmon Escapement Data Guidebook</title>
+  <title>8 Step 6: Metadata and Metric Specifications | Salmon Escapement Data Guidebook</title>
   <meta name="description" content="<p>Follow-me cookbook for turning multi-source escapement data across DFO Pacific
 Region Areas into Conservation Unit (CU) time series, with metadata and metric
 settings needed for Wild Salmon Policy (WSP) and Fisheries Act reporting.</p>" />
   <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="6 Step 4: Record Processing | Salmon Escapement Data Guidebook" />
+  <meta property="og:title" content="8 Step 6: Metadata and Metric Specifications | Salmon Escapement Data Guidebook" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="<p>Follow-me cookbook for turning multi-source escapement data across DFO Pacific
@@ -19,7 +19,7 @@ settings needed for Wild Salmon Policy (WSP) and Fisheries Act reporting.</p>" /
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="6 Step 4: Record Processing | Salmon Escapement Data Guidebook" />
+  <meta name="twitter:title" content="8 Step 6: Metadata and Metric Specifications | Salmon Escapement Data Guidebook" />
   
   <meta name="twitter:description" content="<p>Follow-me cookbook for turning multi-source escapement data across DFO Pacific
 Region Areas into Conservation Unit (CU) time series, with metadata and metric
@@ -36,8 +36,8 @@ settings needed for Wild Salmon Policy (WSP) and Fisheries Act reporting.</p>" /
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="step-3-record-selection.html"/>
-<link rel="next" href="step-5-estimation.html"/>
+<link rel="prev" href="step-5-estimation.html"/>
+<link rel="next" href="patterns-and-templates.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -373,60 +373,126 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="step-4-record-processing" class="section level1 hasAnchor" number="6">
-<h1><span class="header-section-number">6</span> Step 4: Record Processing<a href="step-4-record-processing.html#step-4-record-processing" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="objective-3" class="section level2 hasAnchor" number="6.1">
-<h2><span class="header-section-number">6.1</span> Objective<a href="step-4-record-processing.html#objective-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Transform selected records into analysis-ready values with explicit adjustment
-flags.</p>
+<div id="step-6-metadata-and-metric-specifications" class="section level1 hasAnchor" number="8">
+<h1><span class="header-section-number">8</span> Step 6: Metadata and Metric Specifications<a href="step-6-metadata-and-metric-specifications.html#step-6-metadata-and-metric-specifications" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="objective-5" class="section level2 hasAnchor" number="8.1">
+<h2><span class="header-section-number">8.1</span> Objective<a href="step-6-metadata-and-metric-specifications.html#objective-5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Produce a metadata package that makes each CU time series understandable,
+reviewable, and machine-usable.</p>
+<p>This chapter follows the practical conversion approach from the metadata
+questionnaire distillation: convert question prompts into <strong>how-to-fill
+procedures</strong>.</p>
 </div>
-<div id="processing-actions-in-order" class="section level2 hasAnchor" number="6.2">
-<h2><span class="header-section-number">6.2</span> Processing actions (in order)<a href="step-4-record-processing.html#processing-actions-in-order" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<ol style="list-style-type: decimal">
-<li>Apply approved infill/expansion logic (if applicable).</li>
-<li>Apply enhancement handling rules (wild vs total expectations).</li>
-<li>Harmonize year fields and numeric formats.</li>
-<li>Preserve both raw and adjusted values.</li>
-<li>Emit flags for every adjustment type.</li>
-</ol>
-</div>
-<div id="species-pattern-notes-from-current-production-repos" class="section level2 hasAnchor" number="6.3">
-<h2><span class="header-section-number">6.3</span> Species-pattern notes from current production repos<a href="step-4-record-processing.html#species-pattern-notes-from-current-production-repos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="metadata-package-components" class="section level2 hasAnchor" number="8.2">
+<h2><span class="header-section-number">8.2</span> Metadata package components<a href="step-6-metadata-and-metric-specifications.html#metadata-package-components" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>At minimum, keep these files together:</p>
 <ul>
-<li>Sockeye: multiple CU-specific gap-fill functions exist (regular, Quesnel,
-Shuswap, Takla-Trem, average-based); treat these as declared methods, not
-hidden code behavior.</li>
-<li>Coho: decomposition between hatchery and natural-origin components feeds CU
-brood-year outputs; verify assumptions remain unchanged.</li>
-<li>Chum: CU totals are assembled from major systems + Harrison components;
-document composition assumptions.</li>
-<li>Pink: official CU series is retained while historical stream context is merged
-for pop-level representation.</li>
+<li><code>metadata_cu.csv</code></li>
+<li><code>metric_specs.csv</code></li>
+<li><code>codes.csv</code> (controlled vocabularies)</li>
+<li><code>metadata_notes.md</code></li>
 </ul>
 </div>
-<div id="minimum-output-columns-recommended" class="section level2 hasAnchor" number="6.4">
-<h2><span class="header-section-number">6.4</span> Minimum output columns (recommended)<a href="step-4-record-processing.html#minimum-output-columns-recommended" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="how-to-fill-blocks" class="section level2 hasAnchor" number="8.3">
+<h2><span class="header-section-number">8.3</span> How-to-fill blocks<a href="step-6-metadata-and-metric-specifications.html#how-to-fill-blocks" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="cu-context" class="section level3 hasAnchor" number="8.3.1">
+<h3><span class="header-section-number">8.3.1</span> 1) CU context<a href="step-6-metadata-and-metric-specifications.html#cu-context" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Fields to fill:</p>
 <ul>
-<li>key IDs (CU/Pop/year)</li>
-<li>processed value(s)</li>
-<li>raw value(s)</li>
-<li>adjustment flags (infill/scale/enhancement)</li>
-<li>notes or method tag</li>
+<li><code>CU_ID</code>, <code>CU_Name</code>, <code>Species</code></li>
+<li>verification status + year</li>
+<li>geographic/life-history context fields used by your program</li>
+</ul>
+<p>Rules:</p>
+<ul>
+<li>keep CU ID format stable across all files</li>
+<li>if aliases exist, document mapping in a lookup field/table</li>
 </ul>
 </div>
-<div id="required-outputs-from-step-4" class="section level2 hasAnchor" number="6.5">
-<h2><span class="header-section-number">6.5</span> Required outputs from Step 4<a href="step-4-record-processing.html#required-outputs-from-step-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="data-source-calculation-method" class="section level3 hasAnchor" number="8.3.2">
+<h3><span class="header-section-number">8.3.2</span> 2) Data source + calculation method<a href="step-6-metadata-and-metric-specifications.html#data-source-calculation-method" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Fields to fill:</p>
 <ul>
-<li><code>processed_records.csv</code></li>
-<li><code>processing_log.md</code></li>
+<li>source system(s)</li>
+<li>source pull date(s)</li>
+<li>year coverage</li>
+<li>spawner estimate type and calculation method</li>
+</ul>
+<p>Rules:</p>
+<ul>
+<li>describe method in plain language plus coded value</li>
+<li>include file/script provenance for reproducibility</li>
 </ul>
 </div>
-<div id="escalate-when-3" class="section level2 hasAnchor" number="6.6">
-<h2><span class="header-section-number">6.6</span> Escalate when<a href="step-4-record-processing.html#escalate-when-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="benchmarks" class="section level3 hasAnchor" number="8.3.3">
+<h3><span class="header-section-number">8.3.3</span> 3) Benchmarks<a href="step-6-metadata-and-metric-specifications.html#benchmarks" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Fields to fill:</p>
 <ul>
-<li>adjustments materially change trend interpretation but method justification is
-weak</li>
-<li>custom manual fixes are introduced without reproducible rule expression</li>
+<li>benchmark type(s)</li>
+<li>method reference</li>
+<li>benchmark values and units</li>
+</ul>
+<p>Rules:</p>
+<ul>
+<li>include citations or report references for benchmark method</li>
+<li>distinguish operational benchmark from reference-only benchmark</li>
+</ul>
+</div>
+<div id="active-interventions" class="section level3 hasAnchor" number="8.3.4">
+<h3><span class="header-section-number">8.3.4</span> 4) Active interventions<a href="step-6-metadata-and-metric-specifications.html#active-interventions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Fields to fill:</p>
+<ul>
+<li>hatchery/spawning channel influence flags</li>
+<li>adjustment notes where interventions affect interpretation</li>
+</ul>
+</div>
+<div id="metric-specifications" class="section level3 hasAnchor" number="8.3.5">
+<h3><span class="header-section-number">8.3.5</span> 5) Metric specifications<a href="step-6-metadata-and-metric-specifications.html#metric-specifications" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Fields to fill:</p>
+<ul>
+<li>enabled metrics by CU</li>
+<li>metric parameters</li>
+<li>cycle/benchmark settings where relevant</li>
+</ul>
+<p>Rules:</p>
+<ul>
+<li>align column names and coding with the metric engine inputs you will run</li>
+</ul>
+</div>
+<div id="assessment-process-provenance" class="section level3 hasAnchor" number="8.3.6">
+<h3><span class="header-section-number">8.3.6</span> 6) Assessment process + provenance<a href="step-6-metadata-and-metric-specifications.html#assessment-process-provenance" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Fields to fill:</p>
+<ul>
+<li>reviewers/assessment process</li>
+<li>decision date</li>
+<li>run identifier</li>
+<li>script + repo version</li>
+</ul>
+</div>
+</div>
+<div id="practical-source-files-for-metadata-definitions" class="section level2 hasAnchor" number="8.4">
+<h2><span class="header-section-number">8.4</span> Practical source files for metadata definitions<a href="step-6-metadata-and-metric-specifications.html#practical-source-files-for-metadata-definitions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Local method and field-definition context is available in:</p>
+<ul>
+<li><code>code/Metadata-Questionnaire-CU-Series/REPORT/02_questionnaire.Rmd</code></li>
+<li><code>code/Metadata-Questionnaire-CU-Series/DATA/From_Google_Sheet/Metadata_FieldDefinitions.csv</code></li>
+<li><code>code/Metadata-Questionnaire-CU-Series/DATA/From_Google_Sheet/Metadata_Questions.csv</code></li>
+</ul>
+<p>Use these to avoid inventing inconsistent labels.</p>
+</div>
+<div id="minimum-validation-script" class="section level2 hasAnchor" number="8.5">
+<h2><span class="header-section-number">8.5</span> Minimum validation script<a href="step-6-metadata-and-metric-specifications.html#minimum-validation-script" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="step-6-metadata-and-metric-specifications.html#cb3-1" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;metadata_cu.csv&quot;</span>)</span>
+<span id="cb3-2"><a href="step-6-metadata-and-metric-specifications.html#cb3-2" tabindex="-1"></a>req <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;CU_ID&quot;</span>, <span class="st">&quot;CU_Name&quot;</span>, <span class="st">&quot;Species&quot;</span>)</span>
+<span id="cb3-3"><a href="step-6-metadata-and-metric-specifications.html#cb3-3" tabindex="-1"></a><span class="fu">stopifnot</span>(<span class="fu">all</span>(req <span class="sc">%in%</span> <span class="fu">names</span>(m)))</span>
+<span id="cb3-4"><a href="step-6-metadata-and-metric-specifications.html#cb3-4" tabindex="-1"></a><span class="fu">stopifnot</span>(<span class="sc">!</span><span class="fu">any</span>(<span class="fu">is.na</span>(m<span class="sc">$</span>CU_ID) <span class="sc">|</span> m<span class="sc">$</span>CU_ID <span class="sc">==</span> <span class="st">&quot;&quot;</span>))</span></code></pre></div>
+</div>
+<div id="required-outputs-from-step-6" class="section level2 hasAnchor" number="8.6">
+<h2><span class="header-section-number">8.6</span> Required outputs from Step 6<a href="step-6-metadata-and-metric-specifications.html#required-outputs-from-step-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>completed metadata + metric specs</li>
+<li>controlled vocabulary file</li>
+<li>short note documenting unresolved fields and owners</li>
 </ul>
 
 </div>
@@ -436,8 +502,8 @@ weak</li>
           </div>
         </div>
       </div>
-<a href="step-3-record-selection.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="step-5-estimation.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="step-5-estimation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="patterns-and-templates.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

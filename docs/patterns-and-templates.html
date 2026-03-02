@@ -1,45 +1,42 @@
 <!DOCTYPE html>
-<html lang="" xml:lang="">
+<html lang="en" xml:lang="en">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>9 Patterns and Templates | Salmon Escapement Data Guidebook</title>
-  <meta name="description" content="<p>Cookbook for turning multi-source escapement data across DFO Pacific Region
-Areas into Conservation Unit (CU) time series, paired with the metadata and
-metric settings needed for Wild Salmon Policy (WSP) and Fisheries Act
-reporting.</p>" />
+  <meta name="description" content="<p>Follow-me cookbook for turning multi-source escapement data across DFO Pacific
+Region Areas into Conservation Unit (CU) time series, with metadata and metric
+settings needed for Wild Salmon Policy (WSP) and Fisheries Act reporting.</p>" />
   <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
   <meta property="og:title" content="9 Patterns and Templates | Salmon Escapement Data Guidebook" />
   <meta property="og:type" content="book" />
   
-  <meta property="og:description" content="<p>Cookbook for turning multi-source escapement data across DFO Pacific Region
-Areas into Conservation Unit (CU) time series, paired with the metadata and
-metric settings needed for Wild Salmon Policy (WSP) and Fisheries Act
-reporting.</p>" />
+  <meta property="og:description" content="<p>Follow-me cookbook for turning multi-source escapement data across DFO Pacific
+Region Areas into Conservation Unit (CU) time series, with metadata and metric
+settings needed for Wild Salmon Policy (WSP) and Fisheries Act reporting.</p>" />
   
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="9 Patterns and Templates | Salmon Escapement Data Guidebook" />
   
-  <meta name="twitter:description" content="<p>Cookbook for turning multi-source escapement data across DFO Pacific Region
-Areas into Conservation Unit (CU) time series, paired with the metadata and
-metric settings needed for Wild Salmon Policy (WSP) and Fisheries Act
-reporting.</p>" />
+  <meta name="twitter:description" content="<p>Follow-me cookbook for turning multi-source escapement data across DFO Pacific
+Region Areas into Conservation Unit (CU) time series, with metadata and metric
+settings needed for Wild Salmon Policy (WSP) and Fisheries Act reporting.</p>" />
   
 
-<meta name="author" content="Your Team" />
+<meta name="author" content="DFO Pacific Region" />
 
 
-<meta name="date" content="2026-01-22" />
+<meta name="date" content="2026-03-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="document-metadata-and-metric-specifications.html"/>
+<link rel="prev" href="step-6-metadata-and-metric-specifications.html"/>
 <link rel="next" href="worked-examples.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -63,6 +60,71 @@ reporting.</p>" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
 
 <style type="text/css">
   
@@ -85,91 +147,214 @@ reporting.</p>" />
 <li><a href="./">Salmon Escapement Data Guidebook</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#start-here"><i class="fa fa-check"></i><b>0.1</b> Start here</a></li>
+<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#scope-note"><i class="fa fa-check"></i><b>0.2</b> Scope note</a></li>
+<li class="chapter" data-level="0.3" data-path="index.html"><a href="index.html#downloads"><i class="fa fa-check"></i><b>0.3</b> Downloads</a></li>
+</ul></li>
 <li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#what-this-guide-is"><i class="fa fa-check"></i><b>1.1</b> What this guide is</a></li>
 <li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#who-this-is-for"><i class="fa fa-check"></i><b>1.2</b> Who this is for</a></li>
-<li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#what-you-will-produce"><i class="fa fa-check"></i><b>1.3</b> What you will produce</a></li>
-<li class="chapter" data-level="1.4" data-path="introduction.html"><a href="introduction.html#how-to-use-this-cookbook"><i class="fa fa-check"></i><b>1.4</b> How to use this cookbook</a></li>
-<li class="chapter" data-level="1.5" data-path="introduction.html"><a href="introduction.html#five-step-workflow-at-a-glance"><i class="fa fa-check"></i><b>1.5</b> Five-step workflow at a glance</a></li>
-<li class="chapter" data-level="1.6" data-path="introduction.html"><a href="introduction.html#two-parallel-tracks"><i class="fa fa-check"></i><b>1.6</b> Two parallel tracks</a></li>
-<li class="chapter" data-level="1.7" data-path="introduction.html"><a href="introduction.html#reuse-and-code-packages"><i class="fa fa-check"></i><b>1.7</b> Reuse and code packages</a></li>
-<li class="chapter" data-level="1.8" data-path="introduction.html"><a href="introduction.html#conventions-and-vocabularies"><i class="fa fa-check"></i><b>1.8</b> Conventions and vocabularies</a></li>
+<li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#what-this-guide-is-not"><i class="fa fa-check"></i><b>1.3</b> What this guide is not</a></li>
+<li class="chapter" data-level="1.4" data-path="introduction.html"><a href="introduction.html#what-you-will-produce"><i class="fa fa-check"></i><b>1.4</b> What you will produce</a></li>
+<li class="chapter" data-level="1.5" data-path="introduction.html"><a href="introduction.html#how-to-use-this-cookbook"><i class="fa fa-check"></i><b>1.5</b> How to use this cookbook</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="introduction.html"><a href="introduction.html#lane-a-first-time-user-linear"><i class="fa fa-check"></i><b>1.5.1</b> Lane A: First-time user (linear)</a></li>
+<li class="chapter" data-level="1.5.2" data-path="introduction.html"><a href="introduction.html#lane-b-experienced-user-lookup"><i class="fa fa-check"></i><b>1.5.2</b> Lane B: Experienced user (lookup)</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="introduction.html"><a href="introduction.html#five-step-workflow-at-a-glance"><i class="fa fa-check"></i><b>1.6</b> Five-step workflow at a glance</a></li>
+<li class="chapter" data-level="1.7" data-path="introduction.html"><a href="introduction.html#core-principles"><i class="fa fa-check"></i><b>1.7</b> Core principles</a></li>
+<li class="chapter" data-level="1.8" data-path="introduction.html"><a href="introduction.html#policy-and-method-anchors"><i class="fa fa-check"></i><b>1.8</b> Policy and method anchors</a></li>
+<li class="chapter" data-level="1.9" data-path="introduction.html"><a href="introduction.html#limits-and-escalation"><i class="fa fa-check"></i><b>1.9</b> Limits and escalation</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="getting-started.html"><a href="getting-started.html"><i class="fa fa-check"></i><b>2</b> Getting Started</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="getting-started.html"><a href="getting-started.html#prerequisites"><i class="fa fa-check"></i><b>2.1</b> Prerequisites</a></li>
-<li class="chapter" data-level="2.2" data-path="getting-started.html"><a href="getting-started.html#initial-data-inventory-checklist"><i class="fa fa-check"></i><b>2.2</b> Initial data inventory (checklist)</a></li>
-<li class="chapter" data-level="2.3" data-path="getting-started.html"><a href="getting-started.html#workspace-setup"><i class="fa fa-check"></i><b>2.3</b> Workspace setup</a></li>
-<li class="chapter" data-level="2.4" data-path="getting-started.html"><a href="getting-started.html#outputs-you-should-have-before-moving-on"><i class="fa fa-check"></i><b>2.4</b> Outputs you should have before moving on</a></li>
+<li class="chapter" data-level="2.1" data-path="getting-started.html"><a href="getting-started.html#quick-orientation"><i class="fa fa-check"></i><b>2.1</b> Quick orientation</a></li>
+<li class="chapter" data-level="2.2" data-path="getting-started.html"><a href="getting-started.html#repository-map-what-each-repo-is-for"><i class="fa fa-check"></i><b>2.2</b> Repository map (what each repo is for)</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="getting-started.html"><a href="getting-started.html#core-cookbook"><i class="fa fa-check"></i><b>2.2.1</b> Core cookbook</a></li>
+<li class="chapter" data-level="2.2.2" data-path="getting-started.html"><a href="getting-started.html#species-prep-repos-primary-execution"><i class="fa fa-check"></i><b>2.2.2</b> Species prep repos (primary execution)</a></li>
+<li class="chapter" data-level="2.2.3" data-path="getting-started.html"><a href="getting-started.html#source-report-repos-method-context"><i class="fa fa-check"></i><b>2.2.3</b> Source-report repos (method context)</a></li>
+<li class="chapter" data-level="2.2.4" data-path="getting-started.html"><a href="getting-started.html#downstream-metricstooling-repos"><i class="fa fa-check"></i><b>2.2.4</b> Downstream metrics/tooling repos</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="getting-started.html"><a href="getting-started.html#standard-prep-repo-folders"><i class="fa fa-check"></i><b>2.3</b> Standard prep-repo folders</a></li>
+<li class="chapter" data-level="2.4" data-path="getting-started.html"><a href="getting-started.html#package-bootstrap-r"><i class="fa fa-check"></i><b>2.4</b> Package bootstrap (R)</a></li>
+<li class="chapter" data-level="2.5" data-path="getting-started.html"><a href="getting-started.html#pre-run-checklist-required"><i class="fa fa-check"></i><b>2.5</b> Pre-run checklist (required)</a></li>
+<li class="chapter" data-level="2.6" data-path="getting-started.html"><a href="getting-started.html#minimum-key-file-checks-by-species"><i class="fa fa-check"></i><b>2.6</b> Minimum key-file checks by species</a></li>
+<li class="chapter" data-level="2.7" data-path="getting-started.html"><a href="getting-started.html#before-moving-to-step-1"><i class="fa fa-check"></i><b>2.7</b> Before moving to Step 1</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="step-1-source-data-verification.html"><a href="step-1-source-data-verification.html"><i class="fa fa-check"></i><b>3</b> Step 1: Source Data Verification</a>
 <ul>
 <li class="chapter" data-level="3.1" data-path="step-1-source-data-verification.html"><a href="step-1-source-data-verification.html#objective"><i class="fa fa-check"></i><b>3.1</b> Objective</a></li>
-<li class="chapter" data-level="3.2" data-path="step-1-source-data-verification.html"><a href="step-1-source-data-verification.html#actions"><i class="fa fa-check"></i><b>3.2</b> Actions</a></li>
-<li class="chapter" data-level="3.3" data-path="step-1-source-data-verification.html"><a href="step-1-source-data-verification.html#outputs"><i class="fa fa-check"></i><b>3.3</b> Outputs</a></li>
-<li class="chapter" data-level="3.4" data-path="step-1-source-data-verification.html"><a href="step-1-source-data-verification.html#tips"><i class="fa fa-check"></i><b>3.4</b> Tips</a></li>
+<li class="chapter" data-level="3.2" data-path="step-1-source-data-verification.html"><a href="step-1-source-data-verification.html#do-this-exactly"><i class="fa fa-check"></i><b>3.2</b> Do this exactly</a></li>
+<li class="chapter" data-level="3.3" data-path="step-1-source-data-verification.html"><a href="step-1-source-data-verification.html#quick-validation-script-adapt-path-as-needed"><i class="fa fa-check"></i><b>3.3</b> Quick validation script (adapt path as needed)</a></li>
+<li class="chapter" data-level="3.4" data-path="step-1-source-data-verification.html"><a href="step-1-source-data-verification.html#species-specific-verification-notes"><i class="fa fa-check"></i><b>3.4</b> Species-specific verification notes</a></li>
+<li class="chapter" data-level="3.5" data-path="step-1-source-data-verification.html"><a href="step-1-source-data-verification.html#required-outputs-from-step-1"><i class="fa fa-check"></i><b>3.5</b> Required outputs from Step 1</a></li>
+<li class="chapter" data-level="3.6" data-path="step-1-source-data-verification.html"><a href="step-1-source-data-verification.html#escalate-when"><i class="fa fa-check"></i><b>3.6</b> Escalate when</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="step-2-site-and-survey-selection.html"><a href="step-2-site-and-survey-selection.html"><i class="fa fa-check"></i><b>4</b> Step 2: Site and Survey Selection</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="step-2-site-and-survey-selection.html"><a href="step-2-site-and-survey-selection.html#objective-1"><i class="fa fa-check"></i><b>4.1</b> Objective</a></li>
-<li class="chapter" data-level="4.2" data-path="step-2-site-and-survey-selection.html"><a href="step-2-site-and-survey-selection.html#actions-1"><i class="fa fa-check"></i><b>4.2</b> Actions</a></li>
-<li class="chapter" data-level="4.3" data-path="step-2-site-and-survey-selection.html"><a href="step-2-site-and-survey-selection.html#outputs-1"><i class="fa fa-check"></i><b>4.3</b> Outputs</a></li>
-<li class="chapter" data-level="4.4" data-path="step-2-site-and-survey-selection.html"><a href="step-2-site-and-survey-selection.html#tips-1"><i class="fa fa-check"></i><b>4.4</b> Tips</a></li>
+<li class="chapter" data-level="4.2" data-path="step-2-site-and-survey-selection.html"><a href="step-2-site-and-survey-selection.html#do-this-exactly-1"><i class="fa fa-check"></i><b>4.2</b> Do this exactly</a></li>
+<li class="chapter" data-level="4.3" data-path="step-2-site-and-survey-selection.html"><a href="step-2-site-and-survey-selection.html#minimum-rule-set-to-document"><i class="fa fa-check"></i><b>4.3</b> Minimum rule set to document</a></li>
+<li class="chapter" data-level="4.4" data-path="step-2-site-and-survey-selection.html"><a href="step-2-site-and-survey-selection.html#practical-implementation-notes-from-existing-repos"><i class="fa fa-check"></i><b>4.4</b> Practical implementation notes from existing repos</a></li>
+<li class="chapter" data-level="4.5" data-path="step-2-site-and-survey-selection.html"><a href="step-2-site-and-survey-selection.html#suggested-output-artifacts"><i class="fa fa-check"></i><b>4.5</b> Suggested output artifacts</a></li>
+<li class="chapter" data-level="4.6" data-path="step-2-site-and-survey-selection.html"><a href="step-2-site-and-survey-selection.html#optional-helper-from-data-standards-repo"><i class="fa fa-check"></i><b>4.6</b> Optional helper (from Data-Standards repo)</a></li>
+<li class="chapter" data-level="4.7" data-path="step-2-site-and-survey-selection.html"><a href="step-2-site-and-survey-selection.html#escalate-when-1"><i class="fa fa-check"></i><b>4.7</b> Escalate when</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="step-3-record-selection.html"><a href="step-3-record-selection.html"><i class="fa fa-check"></i><b>5</b> Step 3: Record Selection</a>
 <ul>
 <li class="chapter" data-level="5.1" data-path="step-3-record-selection.html"><a href="step-3-record-selection.html#objective-2"><i class="fa fa-check"></i><b>5.1</b> Objective</a></li>
-<li class="chapter" data-level="5.2" data-path="step-3-record-selection.html"><a href="step-3-record-selection.html#actions-2"><i class="fa fa-check"></i><b>5.2</b> Actions</a></li>
-<li class="chapter" data-level="5.3" data-path="step-3-record-selection.html"><a href="step-3-record-selection.html#outputs-2"><i class="fa fa-check"></i><b>5.3</b> Outputs</a></li>
-<li class="chapter" data-level="5.4" data-path="step-3-record-selection.html"><a href="step-3-record-selection.html#tips-2"><i class="fa fa-check"></i><b>5.4</b> Tips</a></li>
+<li class="chapter" data-level="5.2" data-path="step-3-record-selection.html"><a href="step-3-record-selection.html#do-this-exactly-2"><i class="fa fa-check"></i><b>5.2</b> Do this exactly</a></li>
+<li class="chapter" data-level="5.3" data-path="step-3-record-selection.html"><a href="step-3-record-selection.html#recommended-hierarchy-template"><i class="fa fa-check"></i><b>5.3</b> Recommended hierarchy template</a></li>
+<li class="chapter" data-level="5.4" data-path="step-3-record-selection.html"><a href="step-3-record-selection.html#mandatory-checks"><i class="fa fa-check"></i><b>5.4</b> Mandatory checks</a></li>
+<li class="chapter" data-level="5.5" data-path="step-3-record-selection.html"><a href="step-3-record-selection.html#example-implementation-patterns"><i class="fa fa-check"></i><b>5.5</b> Example implementation patterns</a></li>
+<li class="chapter" data-level="5.6" data-path="step-3-record-selection.html"><a href="step-3-record-selection.html#required-outputs-from-step-3"><i class="fa fa-check"></i><b>5.6</b> Required outputs from Step 3</a></li>
+<li class="chapter" data-level="5.7" data-path="step-3-record-selection.html"><a href="step-3-record-selection.html#escalate-when-2"><i class="fa fa-check"></i><b>5.7</b> Escalate when</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="step-4-record-processing.html"><a href="step-4-record-processing.html"><i class="fa fa-check"></i><b>6</b> Step 4: Record Processing</a>
 <ul>
 <li class="chapter" data-level="6.1" data-path="step-4-record-processing.html"><a href="step-4-record-processing.html#objective-3"><i class="fa fa-check"></i><b>6.1</b> Objective</a></li>
-<li class="chapter" data-level="6.2" data-path="step-4-record-processing.html"><a href="step-4-record-processing.html#actions-3"><i class="fa fa-check"></i><b>6.2</b> Actions</a></li>
-<li class="chapter" data-level="6.3" data-path="step-4-record-processing.html"><a href="step-4-record-processing.html#outputs-3"><i class="fa fa-check"></i><b>6.3</b> Outputs</a></li>
-<li class="chapter" data-level="6.4" data-path="step-4-record-processing.html"><a href="step-4-record-processing.html#tips-3"><i class="fa fa-check"></i><b>6.4</b> Tips</a></li>
+<li class="chapter" data-level="6.2" data-path="step-4-record-processing.html"><a href="step-4-record-processing.html#processing-actions-in-order"><i class="fa fa-check"></i><b>6.2</b> Processing actions (in order)</a></li>
+<li class="chapter" data-level="6.3" data-path="step-4-record-processing.html"><a href="step-4-record-processing.html#species-pattern-notes-from-current-production-repos"><i class="fa fa-check"></i><b>6.3</b> Species-pattern notes from current production repos</a></li>
+<li class="chapter" data-level="6.4" data-path="step-4-record-processing.html"><a href="step-4-record-processing.html#minimum-output-columns-recommended"><i class="fa fa-check"></i><b>6.4</b> Minimum output columns (recommended)</a></li>
+<li class="chapter" data-level="6.5" data-path="step-4-record-processing.html"><a href="step-4-record-processing.html#required-outputs-from-step-4"><i class="fa fa-check"></i><b>6.5</b> Required outputs from Step 4</a></li>
+<li class="chapter" data-level="6.6" data-path="step-4-record-processing.html"><a href="step-4-record-processing.html#escalate-when-3"><i class="fa fa-check"></i><b>6.6</b> Escalate when</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="step-5-estimation.html"><a href="step-5-estimation.html"><i class="fa fa-check"></i><b>7</b> Step 5: Estimation</a>
 <ul>
 <li class="chapter" data-level="7.1" data-path="step-5-estimation.html"><a href="step-5-estimation.html#objective-4"><i class="fa fa-check"></i><b>7.1</b> Objective</a></li>
-<li class="chapter" data-level="7.2" data-path="step-5-estimation.html"><a href="step-5-estimation.html#actions-4"><i class="fa fa-check"></i><b>7.2</b> Actions</a></li>
-<li class="chapter" data-level="7.3" data-path="step-5-estimation.html"><a href="step-5-estimation.html#outputs-4"><i class="fa fa-check"></i><b>7.3</b> Outputs</a></li>
-<li class="chapter" data-level="7.4" data-path="step-5-estimation.html"><a href="step-5-estimation.html#tips-4"><i class="fa fa-check"></i><b>7.4</b> Tips</a></li>
+<li class="chapter" data-level="7.2" data-path="step-5-estimation.html"><a href="step-5-estimation.html#choose-estimation-mode"><i class="fa fa-check"></i><b>7.2</b> Choose estimation mode</a></li>
+<li class="chapter" data-level="7.3" data-path="step-5-estimation.html"><a href="step-5-estimation.html#do-this-exactly-3"><i class="fa fa-check"></i><b>7.3</b> Do this exactly</a></li>
+<li class="chapter" data-level="7.4" data-path="step-5-estimation.html"><a href="step-5-estimation.html#minimum-estimation-qc"><i class="fa fa-check"></i><b>7.4</b> Minimum estimation QC</a></li>
+<li class="chapter" data-level="7.5" data-path="step-5-estimation.html"><a href="step-5-estimation.html#downstream-metric-execution"><i class="fa fa-check"></i><b>7.5</b> Downstream metric execution</a></li>
+<li class="chapter" data-level="7.6" data-path="step-5-estimation.html"><a href="step-5-estimation.html#required-outputs-from-step-5"><i class="fa fa-check"></i><b>7.6</b> Required outputs from Step 5</a></li>
+<li class="chapter" data-level="7.7" data-path="step-5-estimation.html"><a href="step-5-estimation.html#escalate-when-4"><i class="fa fa-check"></i><b>7.7</b> Escalate when</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="document-metadata-and-metric-specifications.html"><a href="document-metadata-and-metric-specifications.html"><i class="fa fa-check"></i><b>8</b> Document Metadata and Metric Specifications</a>
+<li class="chapter" data-level="8" data-path="step-6-metadata-and-metric-specifications.html"><a href="step-6-metadata-and-metric-specifications.html"><i class="fa fa-check"></i><b>8</b> Step 6: Metadata and Metric Specifications</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="document-metadata-and-metric-specifications.html"><a href="document-metadata-and-metric-specifications.html#objective-5"><i class="fa fa-check"></i><b>8.1</b> Objective</a></li>
-<li class="chapter" data-level="8.2" data-path="document-metadata-and-metric-specifications.html"><a href="document-metadata-and-metric-specifications.html#required-fields-from-the-metadata-questionnaire"><i class="fa fa-check"></i><b>8.2</b> Required fields (from the metadata questionnaire)</a></li>
-<li class="chapter" data-level="8.3" data-path="document-metadata-and-metric-specifications.html"><a href="document-metadata-and-metric-specifications.html#how-to-structure-metadata-files"><i class="fa fa-check"></i><b>8.3</b> How to structure metadata files</a></li>
-<li class="chapter" data-level="8.4" data-path="document-metadata-and-metric-specifications.html"><a href="document-metadata-and-metric-specifications.html#outputs-5"><i class="fa fa-check"></i><b>8.4</b> Outputs</a></li>
-<li class="chapter" data-level="8.5" data-path="document-metadata-and-metric-specifications.html"><a href="document-metadata-and-metric-specifications.html#tips-5"><i class="fa fa-check"></i><b>8.5</b> Tips</a></li>
+<li class="chapter" data-level="8.1" data-path="step-6-metadata-and-metric-specifications.html"><a href="step-6-metadata-and-metric-specifications.html#objective-5"><i class="fa fa-check"></i><b>8.1</b> Objective</a></li>
+<li class="chapter" data-level="8.2" data-path="step-6-metadata-and-metric-specifications.html"><a href="step-6-metadata-and-metric-specifications.html#metadata-package-components"><i class="fa fa-check"></i><b>8.2</b> Metadata package components</a></li>
+<li class="chapter" data-level="8.3" data-path="step-6-metadata-and-metric-specifications.html"><a href="step-6-metadata-and-metric-specifications.html#how-to-fill-blocks"><i class="fa fa-check"></i><b>8.3</b> How-to-fill blocks</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="step-6-metadata-and-metric-specifications.html"><a href="step-6-metadata-and-metric-specifications.html#cu-context"><i class="fa fa-check"></i><b>8.3.1</b> 1) CU context</a></li>
+<li class="chapter" data-level="8.3.2" data-path="step-6-metadata-and-metric-specifications.html"><a href="step-6-metadata-and-metric-specifications.html#data-source-calculation-method"><i class="fa fa-check"></i><b>8.3.2</b> 2) Data source + calculation method</a></li>
+<li class="chapter" data-level="8.3.3" data-path="step-6-metadata-and-metric-specifications.html"><a href="step-6-metadata-and-metric-specifications.html#benchmarks"><i class="fa fa-check"></i><b>8.3.3</b> 3) Benchmarks</a></li>
+<li class="chapter" data-level="8.3.4" data-path="step-6-metadata-and-metric-specifications.html"><a href="step-6-metadata-and-metric-specifications.html#active-interventions"><i class="fa fa-check"></i><b>8.3.4</b> 4) Active interventions</a></li>
+<li class="chapter" data-level="8.3.5" data-path="step-6-metadata-and-metric-specifications.html"><a href="step-6-metadata-and-metric-specifications.html#metric-specifications"><i class="fa fa-check"></i><b>8.3.5</b> 5) Metric specifications</a></li>
+<li class="chapter" data-level="8.3.6" data-path="step-6-metadata-and-metric-specifications.html"><a href="step-6-metadata-and-metric-specifications.html#assessment-process-provenance"><i class="fa fa-check"></i><b>8.3.6</b> 6) Assessment process + provenance</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="step-6-metadata-and-metric-specifications.html"><a href="step-6-metadata-and-metric-specifications.html#practical-source-files-for-metadata-definitions"><i class="fa fa-check"></i><b>8.4</b> Practical source files for metadata definitions</a></li>
+<li class="chapter" data-level="8.5" data-path="step-6-metadata-and-metric-specifications.html"><a href="step-6-metadata-and-metric-specifications.html#minimum-validation-script"><i class="fa fa-check"></i><b>8.5</b> Minimum validation script</a></li>
+<li class="chapter" data-level="8.6" data-path="step-6-metadata-and-metric-specifications.html"><a href="step-6-metadata-and-metric-specifications.html#required-outputs-from-step-6"><i class="fa fa-check"></i><b>8.6</b> Required outputs from Step 6</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="patterns-and-templates.html"><a href="patterns-and-templates.html"><i class="fa fa-check"></i><b>9</b> Patterns and Templates</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="patterns-and-templates.html"><a href="patterns-and-templates.html#purpose"><i class="fa fa-check"></i><b>9.1</b> Purpose</a></li>
-<li class="chapter" data-level="9.2" data-path="patterns-and-templates.html"><a href="patterns-and-templates.html#patterns-to-document"><i class="fa fa-check"></i><b>9.2</b> Patterns to document</a></li>
-<li class="chapter" data-level="9.3" data-path="patterns-and-templates.html"><a href="patterns-and-templates.html#what-to-include-for-each-pattern"><i class="fa fa-check"></i><b>9.3</b> What to include for each pattern</a></li>
+<li class="chapter" data-level="9.1" data-path="patterns-and-templates.html"><a href="patterns-and-templates.html#how-to-use-pattern-cards"><i class="fa fa-check"></i><b>9.1</b> How to use pattern cards</a></li>
+<li class="chapter" data-level="9.2" data-path="patterns-and-templates.html"><a href="patterns-and-templates.html#pattern-card-1-fraser-sockeye-direct-sum-targeted-gap-fills"><i class="fa fa-check"></i><b>9.2</b> Pattern Card 1 — Fraser Sockeye (direct sum + targeted gap fills)</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="patterns-and-templates.html"><a href="patterns-and-templates.html#use-when"><i class="fa fa-check"></i><b>9.2.1</b> Use when</a></li>
+<li class="chapter" data-level="9.2.2" data-path="patterns-and-templates.html"><a href="patterns-and-templates.html#repo-and-script"><i class="fa fa-check"></i><b>9.2.2</b> Repo and script</a></li>
+<li class="chapter" data-level="9.2.3" data-path="patterns-and-templates.html"><a href="patterns-and-templates.html#required-inputs"><i class="fa fa-check"></i><b>9.2.3</b> Required inputs</a></li>
+<li class="chapter" data-level="9.2.4" data-path="patterns-and-templates.html"><a href="patterns-and-templates.html#run"><i class="fa fa-check"></i><b>9.2.4</b> Run</a></li>
+<li class="chapter" data-level="9.2.5" data-path="patterns-and-templates.html"><a href="patterns-and-templates.html#expected-outputs"><i class="fa fa-check"></i><b>9.2.5</b> Expected outputs</a></li>
+<li class="chapter" data-level="9.2.6" data-path="patterns-and-templates.html"><a href="patterns-and-templates.html#minimum-qc"><i class="fa fa-check"></i><b>9.2.6</b> Minimum QC</a></li>
+<li class="chapter" data-level="9.2.7" data-path="patterns-and-templates.html"><a href="patterns-and-templates.html#escalate-if"><i class="fa fa-check"></i><b>9.2.7</b> Escalate if</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="patterns-and-templates.html"><a href="patterns-and-templates.html#pattern-card-2-interior-fraser-coho-cu-decomposition-brood-year-outputs"><i class="fa fa-check"></i><b>9.3</b> Pattern Card 2 — Interior Fraser Coho (CU decomposition + brood-year outputs)</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="patterns-and-templates.html"><a href="patterns-and-templates.html#use-when-1"><i class="fa fa-check"></i><b>9.3.1</b> Use when</a></li>
+<li class="chapter" data-level="9.3.2" data-path="patterns-and-templates.html"><a href="patterns-and-templates.html#repo-and-scripts"><i class="fa fa-check"></i><b>9.3.2</b> Repo and scripts</a></li>
+<li class="chapter" data-level="9.3.3" data-path="patterns-and-templates.html"><a href="patterns-and-templates.html#required-inputs-1"><i class="fa fa-check"></i><b>9.3.3</b> Required inputs</a></li>
+<li class="chapter" data-level="9.3.4" data-path="patterns-and-templates.html"><a href="patterns-and-templates.html#run-1"><i class="fa fa-check"></i><b>9.3.4</b> Run</a></li>
+<li class="chapter" data-level="9.3.5" data-path="patterns-and-templates.html"><a href="patterns-and-templates.html#expected-outputs-1"><i class="fa fa-check"></i><b>9.3.5</b> Expected outputs</a></li>
+<li class="chapter" data-level="9.3.6" data-path="patterns-and-templates.html"><a href="patterns-and-templates.html#minimum-qc-1"><i class="fa fa-check"></i><b>9.3.6</b> Minimum QC</a></li>
+<li class="chapter" data-level="9.3.7" data-path="patterns-and-templates.html"><a href="patterns-and-templates.html#escalate-if-1"><i class="fa fa-check"></i><b>9.3.7</b> Escalate if</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="patterns-and-templates.html"><a href="patterns-and-templates.html#pattern-card-3-lower-fraser-chum-major-system-aggregate"><i class="fa fa-check"></i><b>9.4</b> Pattern Card 3 — Lower Fraser Chum (major-system aggregate)</a>
+<ul>
+<li class="chapter" data-level="9.4.1" data-path="patterns-and-templates.html"><a href="patterns-and-templates.html#use-when-2"><i class="fa fa-check"></i><b>9.4.1</b> Use when</a></li>
+<li class="chapter" data-level="9.4.2" data-path="patterns-and-templates.html"><a href="patterns-and-templates.html#repo-and-script-1"><i class="fa fa-check"></i><b>9.4.2</b> Repo and script</a></li>
+<li class="chapter" data-level="9.4.3" data-path="patterns-and-templates.html"><a href="patterns-and-templates.html#required-inputs-2"><i class="fa fa-check"></i><b>9.4.3</b> Required inputs</a></li>
+<li class="chapter" data-level="9.4.4" data-path="patterns-and-templates.html"><a href="patterns-and-templates.html#run-2"><i class="fa fa-check"></i><b>9.4.4</b> Run</a></li>
+<li class="chapter" data-level="9.4.5" data-path="patterns-and-templates.html"><a href="patterns-and-templates.html#expected-outputs-2"><i class="fa fa-check"></i><b>9.4.5</b> Expected outputs</a></li>
+<li class="chapter" data-level="9.4.6" data-path="patterns-and-templates.html"><a href="patterns-and-templates.html#minimum-qc-2"><i class="fa fa-check"></i><b>9.4.6</b> Minimum QC</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="patterns-and-templates.html"><a href="patterns-and-templates.html#pattern-card-4-fraser-pink-official-cu-series-historical-stream-layer"><i class="fa fa-check"></i><b>9.5</b> Pattern Card 4 — Fraser Pink (official CU series + historical stream layer)</a>
+<ul>
+<li class="chapter" data-level="9.5.1" data-path="patterns-and-templates.html"><a href="patterns-and-templates.html#use-when-3"><i class="fa fa-check"></i><b>9.5.1</b> Use when</a></li>
+<li class="chapter" data-level="9.5.2" data-path="patterns-and-templates.html"><a href="patterns-and-templates.html#repo-and-script-2"><i class="fa fa-check"></i><b>9.5.2</b> Repo and script</a></li>
+<li class="chapter" data-level="9.5.3" data-path="patterns-and-templates.html"><a href="patterns-and-templates.html#required-inputs-3"><i class="fa fa-check"></i><b>9.5.3</b> Required inputs</a></li>
+<li class="chapter" data-level="9.5.4" data-path="patterns-and-templates.html"><a href="patterns-and-templates.html#run-3"><i class="fa fa-check"></i><b>9.5.4</b> Run</a></li>
+<li class="chapter" data-level="9.5.5" data-path="patterns-and-templates.html"><a href="patterns-and-templates.html#expected-outputs-3"><i class="fa fa-check"></i><b>9.5.5</b> Expected outputs</a></li>
+<li class="chapter" data-level="9.5.6" data-path="patterns-and-templates.html"><a href="patterns-and-templates.html#minimum-qc-3"><i class="fa fa-check"></i><b>9.5.6</b> Minimum QC</a></li>
+</ul></li>
+<li class="chapter" data-level="9.6" data-path="patterns-and-templates.html"><a href="patterns-and-templates.html#template-bundle-use-with-any-pattern"><i class="fa fa-check"></i><b>9.6</b> Template bundle (use with any pattern)</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="worked-examples.html"><a href="worked-examples.html"><i class="fa fa-check"></i><b>10</b> Worked Examples</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="worked-examples.html"><a href="worked-examples.html#purpose-1"><i class="fa fa-check"></i><b>10.1</b> Purpose</a></li>
-<li class="chapter" data-level="10.2" data-path="worked-examples.html"><a href="worked-examples.html#examples-to-build-out"><i class="fa fa-check"></i><b>10.2</b> Examples to build out</a></li>
-<li class="chapter" data-level="10.3" data-path="worked-examples.html"><a href="worked-examples.html#what-each-example-should-contain"><i class="fa fa-check"></i><b>10.3</b> What each example should contain</a></li>
+<li class="chapter" data-level="10.1" data-path="worked-examples.html"><a href="worked-examples.html#worked-example-a-fraser-sockeye-annual-update"><i class="fa fa-check"></i><b>10.1</b> Worked Example A — Fraser Sockeye annual update</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="worked-examples.html"><a href="worked-examples.html#scenario"><i class="fa fa-check"></i><b>10.1.1</b> Scenario</a></li>
+<li class="chapter" data-level="10.1.2" data-path="worked-examples.html"><a href="worked-examples.html#run-4"><i class="fa fa-check"></i><b>10.1.2</b> Run</a></li>
+<li class="chapter" data-level="10.1.3" data-path="worked-examples.html"><a href="worked-examples.html#expected-outputs-4"><i class="fa fa-check"></i><b>10.1.3</b> Expected outputs</a></li>
+<li class="chapter" data-level="10.1.4" data-path="worked-examples.html"><a href="worked-examples.html#minimum-qc-4"><i class="fa fa-check"></i><b>10.1.4</b> Minimum QC</a></li>
+<li class="chapter" data-level="10.1.5" data-path="worked-examples.html"><a href="worked-examples.html#notes"><i class="fa fa-check"></i><b>10.1.5</b> Notes</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="worked-examples.html"><a href="worked-examples.html#worked-example-b-interior-fraser-coho-annual-update"><i class="fa fa-check"></i><b>10.2</b> Worked Example B — Interior Fraser Coho annual update</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="worked-examples.html"><a href="worked-examples.html#scenario-1"><i class="fa fa-check"></i><b>10.2.1</b> Scenario</a></li>
+<li class="chapter" data-level="10.2.2" data-path="worked-examples.html"><a href="worked-examples.html#run-5"><i class="fa fa-check"></i><b>10.2.2</b> Run</a></li>
+<li class="chapter" data-level="10.2.3" data-path="worked-examples.html"><a href="worked-examples.html#expected-outputs-5"><i class="fa fa-check"></i><b>10.2.3</b> Expected outputs</a></li>
+<li class="chapter" data-level="10.2.4" data-path="worked-examples.html"><a href="worked-examples.html#minimum-qc-5"><i class="fa fa-check"></i><b>10.2.4</b> Minimum QC</a></li>
+<li class="chapter" data-level="10.2.5" data-path="worked-examples.html"><a href="worked-examples.html#notes-1"><i class="fa fa-check"></i><b>10.2.5</b> Notes</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="worked-examples.html"><a href="worked-examples.html#worked-example-c-lower-fraser-chum-annual-update"><i class="fa fa-check"></i><b>10.3</b> Worked Example C — Lower Fraser Chum annual update</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="worked-examples.html"><a href="worked-examples.html#scenario-2"><i class="fa fa-check"></i><b>10.3.1</b> Scenario</a></li>
+<li class="chapter" data-level="10.3.2" data-path="worked-examples.html"><a href="worked-examples.html#run-6"><i class="fa fa-check"></i><b>10.3.2</b> Run</a></li>
+<li class="chapter" data-level="10.3.3" data-path="worked-examples.html"><a href="worked-examples.html#expected-outputs-6"><i class="fa fa-check"></i><b>10.3.3</b> Expected outputs</a></li>
+<li class="chapter" data-level="10.3.4" data-path="worked-examples.html"><a href="worked-examples.html#minimum-qc-6"><i class="fa fa-check"></i><b>10.3.4</b> Minimum QC</a></li>
+<li class="chapter" data-level="10.3.5" data-path="worked-examples.html"><a href="worked-examples.html#notes-2"><i class="fa fa-check"></i><b>10.3.5</b> Notes</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="worked-examples.html"><a href="worked-examples.html#worked-example-d-fraser-pink-annual-update"><i class="fa fa-check"></i><b>10.4</b> Worked Example D — Fraser Pink annual update</a>
+<ul>
+<li class="chapter" data-level="10.4.1" data-path="worked-examples.html"><a href="worked-examples.html#scenario-3"><i class="fa fa-check"></i><b>10.4.1</b> Scenario</a></li>
+<li class="chapter" data-level="10.4.2" data-path="worked-examples.html"><a href="worked-examples.html#run-7"><i class="fa fa-check"></i><b>10.4.2</b> Run</a></li>
+<li class="chapter" data-level="10.4.3" data-path="worked-examples.html"><a href="worked-examples.html#expected-outputs-7"><i class="fa fa-check"></i><b>10.4.3</b> Expected outputs</a></li>
+<li class="chapter" data-level="10.4.4" data-path="worked-examples.html"><a href="worked-examples.html#minimum-qc-7"><i class="fa fa-check"></i><b>10.4.4</b> Minimum QC</a></li>
+<li class="chapter" data-level="10.4.5" data-path="worked-examples.html"><a href="worked-examples.html#notes-3"><i class="fa fa-check"></i><b>10.4.5</b> Notes</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="checklists-and-decision-trees.html"><a href="checklists-and-decision-trees.html"><i class="fa fa-check"></i><b>11</b> Checklists and Decision Trees</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="checklists-and-decision-trees.html"><a href="checklists-and-decision-trees.html#annual-update-loop"><i class="fa fa-check"></i><b>11.1</b> Annual update loop</a></li>
-<li class="chapter" data-level="11.2" data-path="checklists-and-decision-trees.html"><a href="checklists-and-decision-trees.html#decision-trees-to-include"><i class="fa fa-check"></i><b>11.2</b> Decision trees to include</a></li>
-<li class="chapter" data-level="11.3" data-path="checklists-and-decision-trees.html"><a href="checklists-and-decision-trees.html#validation-checklists"><i class="fa fa-check"></i><b>11.3</b> Validation checklists</a></li>
+<li class="chapter" data-level="11.1" data-path="checklists-and-decision-trees.html"><a href="checklists-and-decision-trees.html#annual-release-checklist"><i class="fa fa-check"></i><b>11.1</b> Annual release checklist</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="checklists-and-decision-trees.html"><a href="checklists-and-decision-trees.html#a.-data-run-control"><i class="fa fa-check"></i><b>11.1.1</b> A. Data + run control</a></li>
+<li class="chapter" data-level="11.1.2" data-path="checklists-and-decision-trees.html"><a href="checklists-and-decision-trees.html#b.-output-integrity"><i class="fa fa-check"></i><b>11.1.2</b> B. Output integrity</a></li>
+<li class="chapter" data-level="11.1.3" data-path="checklists-and-decision-trees.html"><a href="checklists-and-decision-trees.html#c.-consistency-checks"><i class="fa fa-check"></i><b>11.1.3</b> C. Consistency checks</a></li>
+<li class="chapter" data-level="11.1.4" data-path="checklists-and-decision-trees.html"><a href="checklists-and-decision-trees.html#d.-metadata-metrics-readiness"><i class="fa fa-check"></i><b>11.1.4</b> D. Metadata + metrics readiness</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="checklists-and-decision-trees.html"><a href="checklists-and-decision-trees.html#pop-level-key-guidance-important"><i class="fa fa-check"></i><b>11.2</b> Pop-level key guidance (important)</a></li>
+<li class="chapter" data-level="11.3" data-path="checklists-and-decision-trees.html"><a href="checklists-and-decision-trees.html#decision-tree-choose-estimation-pattern"><i class="fa fa-check"></i><b>11.3</b> Decision tree: choose estimation pattern</a></li>
+<li class="chapter" data-level="11.4" data-path="checklists-and-decision-trees.html"><a href="checklists-and-decision-trees.html#decision-tree-infill-vs-no-infill"><i class="fa fa-check"></i><b>11.4</b> Decision tree: infill vs no infill</a></li>
+<li class="chapter" data-level="11.5" data-path="checklists-and-decision-trees.html"><a href="checklists-and-decision-trees.html#top-failure-modes-and-fixes"><i class="fa fa-check"></i><b>11.5</b> Top failure modes and fixes</a></li>
+<li class="chapter" data-level="11.6" data-path="checklists-and-decision-trees.html"><a href="checklists-and-decision-trees.html#minimum-reusable-qc-snippet"><i class="fa fa-check"></i><b>11.6</b> Minimum reusable QC snippet</a></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i><b>12</b> Appendix</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="appendix.html"><a href="appendix.html#reference-tables-to-add"><i class="fa fa-check"></i><b>12.1</b> Reference tables to add</a></li>
-<li class="chapter" data-level="12.2" data-path="appendix.html"><a href="appendix.html#case-study-summaries"><i class="fa fa-check"></i><b>12.2</b> Case study summaries</a></li>
-<li class="chapter" data-level="12.3" data-path="appendix.html"><a href="appendix.html#external-resources"><i class="fa fa-check"></i><b>12.3</b> External resources</a></li>
+<li class="chapter" data-level="12.1" data-path="appendix.html"><a href="appendix.html#a.-minimal-run-log-template"><i class="fa fa-check"></i><b>12.1</b> A. Minimal run-log template</a></li>
+<li class="chapter" data-level="12.2" data-path="appendix.html"><a href="appendix.html#b.-minimal-decision-log-template"><i class="fa fa-check"></i><b>12.2</b> B. Minimal decision-log template</a></li>
+<li class="chapter" data-level="12.3" data-path="appendix.html"><a href="appendix.html#c.-minimal-qc-summary-template"><i class="fa fa-check"></i><b>12.3</b> C. Minimal QC summary template</a></li>
+<li class="chapter" data-level="12.4" data-path="appendix.html"><a href="appendix.html#d.-key-reference-links"><i class="fa fa-check"></i><b>12.4</b> D. Key reference links</a>
+<ul>
+<li class="chapter" data-level="12.4.1" data-path="appendix.html"><a href="appendix.html#policy-and-core-methods"><i class="fa fa-check"></i><b>12.4.1</b> Policy and core methods</a></li>
+<li class="chapter" data-level="12.4.2" data-path="appendix.html"><a href="appendix.html#core-code-packages"><i class="fa fa-check"></i><b>12.4.2</b> Core code packages</a></li>
+<li class="chapter" data-level="12.4.3" data-path="appendix.html"><a href="appendix.html#public-dataset-context"><i class="fa fa-check"></i><b>12.4.3</b> Public dataset context</a></li>
+</ul></li>
+<li class="chapter" data-level="12.5" data-path="appendix.html"><a href="appendix.html#e.-local-method-context-repos-for-deeper-reading"><i class="fa fa-check"></i><b>12.5</b> E. Local method-context repos (for deeper reading)</a></li>
 </ul></li>
 </ul>
 
@@ -190,36 +375,245 @@ reporting.</p>" />
             <section class="normal" id="section-">
 <div id="patterns-and-templates" class="section level1 hasAnchor" number="9">
 <h1><span class="header-section-number">9</span> Patterns and Templates<a href="patterns-and-templates.html#patterns-and-templates" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="purpose" class="section level2 hasAnchor" number="9.1">
-<h2><span class="header-section-number">9.1</span> Purpose<a href="patterns-and-templates.html#purpose" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Provide reusable patterns distilled from case studies so new CU groups can adopt
-the closest-fit workflow without copying bespoke scripts.</p>
-</div>
-<div id="patterns-to-document" class="section level2 hasAnchor" number="9.2">
-<h2><span class="header-section-number">9.2</span> Patterns to document<a href="patterns-and-templates.html#patterns-to-document" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="how-to-use-pattern-cards" class="section level2 hasAnchor" number="9.1">
+<h2><span class="header-section-number">9.1</span> How to use pattern cards<a href="patterns-and-templates.html#how-to-use-pattern-cards" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Treat each card as a <strong>do-this-exactly</strong> runbook for a common scenario.</p>
+<p>Each card includes:</p>
 <ul>
-<li><strong>nuSEDS direct-sum pattern</strong> (Fraser Chinook precedent): persistent sites,
-low/unknown enhancement, direct summation after selection and basic infill.</li>
-<li><strong>Run reconstruction pattern</strong> (Yukon Chinook precedent): multi-source
-harvest and border passage inputs, model-based CU estimates, and uncertainty
-handling.</li>
-<li><strong>Indicator expansion pattern</strong> (Skeena Sockeye precedent): indicator surveys
-scaled to CU totals with documented expansion factors and QA checks.</li>
-<li><strong>Metadata template</strong>: how to fill required fields and link them to the
-workflow outputs.</li>
+<li>when to use it</li>
+<li>required inputs</li>
+<li>exact run steps</li>
+<li>expected outputs</li>
+<li>minimum QC checks</li>
+<li>escalation triggers</li>
+</ul>
+<hr />
+</div>
+<div id="pattern-card-1-fraser-sockeye-direct-sum-targeted-gap-fills" class="section level2 hasAnchor" number="9.2">
+<h2><span class="header-section-number">9.2</span> Pattern Card 1 — Fraser Sockeye (direct sum + targeted gap fills)<a href="patterns-and-templates.html#pattern-card-1-fraser-sockeye-direct-sum-targeted-gap-fills" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="use-when" class="section level3 hasAnchor" number="9.2.1">
+<h3><span class="header-section-number">9.2.1</span> Use when<a href="patterns-and-templates.html#use-when" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Species is Fraser Sockeye</li>
+<li>You need CU and pop flat files aligned with existing SoS/WSP practice</li>
+<li>You need built-in handling for known gap-fill pathways (e.g., Quesnel,
+Shuswap, Takla-Trem, Nahatlatch)</li>
 </ul>
 </div>
-<div id="what-to-include-for-each-pattern" class="section level2 hasAnchor" number="9.3">
-<h2><span class="header-section-number">9.3</span> What to include for each pattern<a href="patterns-and-templates.html#what-to-include-for-each-pattern" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="repo-and-script" class="section level3 hasAnchor" number="9.2.2">
+<h3><span class="header-section-number">9.2.2</span> Repo and script<a href="patterns-and-templates.html#repo-and-script" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
-<li>Input shape (columns, codes, required lookups)</li>
-<li>Processing phases and decision points</li>
-<li>Code snippets or scripts to run</li>
-<li>QC/validation steps and expected outputs</li>
-<li>How to document metadata for the pattern</li>
-<li>How to feed outputs into <code>WSP-Metrics-Pkg</code> (column expectations, toggle flags
-for metrics on/off per CU)</li>
-<li>A short “diff against prior release” recipe so updates are reviewable</li>
+<li>Repo: <code>FRSK-WSPDataPrep</code></li>
+<li>Script: <code>CODE/Prep4_CleanedFlatFile_Fraser_Sk_KDEdits2024.R</code></li>
+</ul>
+</div>
+<div id="required-inputs" class="section level3 hasAnchor" number="9.2.3">
+<h3><span class="header-section-number">9.2.3</span> Required inputs<a href="patterns-and-templates.html#required-inputs" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><code>DATA_IN/SKAll (Nov YYYY).csv</code></li>
+<li><code>DATA_IN/Fraser Sockeye SR Data_YYYY.csv</code></li>
+<li><code>DATA_IN/Sockeye_Fraser_CU_Streams.csv</code></li>
+<li><code>DATA_IN/Sockeye_Fraser_SR_Streams.csv</code></li>
+<li><code>DATA_IN/Sockeye_Fraser_Expansion_Years.csv</code></li>
+<li><code>DATA_LOOKUP_FILES/MOD_MAIN_CU_LOOKUP_FOR_SOS.csv</code></li>
+<li><code>DATA_LOOKUP_FILES/Site_Info_GeneratedDecoder_Fraser_Sk.csv</code></li>
+</ul>
+</div>
+<div id="run" class="section level3 hasAnchor" number="9.2.4">
+<h3><span class="header-section-number">9.2.4</span> Run<a href="patterns-and-templates.html#run" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="patterns-and-templates.html#cb4-1" tabindex="-1"></a><span class="bu">cd</span> FRSK-WSPDataPrep</span>
+<span id="cb4-2"><a href="patterns-and-templates.html#cb4-2" tabindex="-1"></a><span class="ex">Rscript</span> CODE/Prep4_CleanedFlatFile_Fraser_Sk_KDEdits2024.R</span></code></pre></div>
+</div>
+<div id="expected-outputs" class="section level3 hasAnchor" number="9.2.5">
+<h3><span class="header-section-number">9.2.5</span> Expected outputs<a href="patterns-and-templates.html#expected-outputs" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><code>DATA_OUT/Cleaned_FlatFile_ByPop_FraserSockeye.csv</code></li>
+<li><code>DATA_OUT/Cleaned_FlatFile_ByCU_FraserSockeye.csv</code></li>
+<li><code>DATA_TRACKING/FraserSockeye_MatchingCheck.csv</code></li>
+<li><code>DATA_TRACKING/Sites not in CUs.csv</code></li>
+</ul>
+</div>
+<div id="minimum-qc" class="section level3 hasAnchor" number="9.2.6">
+<h3><span class="header-section-number">9.2.6</span> Minimum QC<a href="patterns-and-templates.html#minimum-qc" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>CU-level uniqueness by <code>(CU_ID, Year)</code></li>
+<li>Year range reaches current update year</li>
+<li><code>Sites not in CUs.csv</code> reviewed and signed off</li>
+<li>Manual exception years (e.g., Taseko/Birkenhead) documented in run log</li>
+</ul>
+</div>
+<div id="escalate-if" class="section level3 hasAnchor" number="9.2.7">
+<h3><span class="header-section-number">9.2.7</span> Escalate if<a href="patterns-and-templates.html#escalate-if" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>CU totals fail plausibility checks against prior release</li>
+<li>input stream naming changes break decoder joins</li>
+<li>new missingness patterns appear in high-priority CUs</li>
+</ul>
+<hr />
+</div>
+</div>
+<div id="pattern-card-2-interior-fraser-coho-cu-decomposition-brood-year-outputs" class="section level2 hasAnchor" number="9.3">
+<h2><span class="header-section-number">9.3</span> Pattern Card 2 — Interior Fraser Coho (CU decomposition + brood-year outputs)<a href="patterns-and-templates.html#pattern-card-2-interior-fraser-coho-cu-decomposition-brood-year-outputs" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="use-when-1" class="section level3 hasAnchor" number="9.3.1">
+<h3><span class="header-section-number">9.3.1</span> Use when<a href="patterns-and-templates.html#use-when-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Species is Interior Fraser Coho</li>
+<li>You need CU and pop outputs plus hatchery/natural decomposition flow</li>
+</ul>
+</div>
+<div id="repo-and-scripts" class="section level3 hasAnchor" number="9.3.2">
+<h3><span class="header-section-number">9.3.2</span> Repo and scripts<a href="patterns-and-templates.html#repo-and-scripts" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Repo: <code>FRCo-WSPDataPrep</code></li>
+<li>Scripts:
+<ul>
+<li><code>CODE/SUB_Data extraction and clean up (Coho for now)_2023.R</code></li>
+<li><code>CODE/Prep5_CleanedFlatFile_Fraser_Coho.R</code></li>
+</ul></li>
+</ul>
+</div>
+<div id="required-inputs-1" class="section level3 hasAnchor" number="9.3.3">
+<h3><span class="header-section-number">9.3.3</span> Required inputs<a href="patterns-and-templates.html#required-inputs-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>latest <code>DATA_IN/IFC Data 1975-&lt;year&gt; ... for Salmon Scanner.csv</code></li>
+<li><code>DATA_IN/IFC Infill exceptions.csv</code></li>
+<li><code>DATA_IN/FRSK_CU_Info_masterUpdate.csv</code></li>
+<li><code>DATA_IN/Fraser Coho POPID Lookup...csv</code></li>
+<li><code>DATA_LOOKUP_FILES/MOD_MAIN_CU_LOOKUP_FOR_SOS.csv</code></li>
+</ul>
+</div>
+<div id="run-1" class="section level3 hasAnchor" number="9.3.4">
+<h3><span class="header-section-number">9.3.4</span> Run<a href="patterns-and-templates.html#run-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="patterns-and-templates.html#cb5-1" tabindex="-1"></a><span class="bu">cd</span> FRCo-WSPDataPrep</span>
+<span id="cb5-2"><a href="patterns-and-templates.html#cb5-2" tabindex="-1"></a><span class="ex">Rscript</span> CODE/Prep5_CleanedFlatFile_Fraser_Coho.R</span></code></pre></div>
+</div>
+<div id="expected-outputs-1" class="section level3 hasAnchor" number="9.3.5">
+<h3><span class="header-section-number">9.3.5</span> Expected outputs<a href="patterns-and-templates.html#expected-outputs-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><code>DATA_OUT/Cleaned_FlatFile_ByPop_FraserCoho.csv</code></li>
+<li><code>DATA_OUT/Cleaned_FlatFile_ByCU_FraserCoho.csv</code></li>
+<li><code>DATA_PROCESSING/All IFC CUs BY Table_EC.max=NA_infill=FALSE.csv</code></li>
+</ul>
+</div>
+<div id="minimum-qc-1" class="section level3 hasAnchor" number="9.3.6">
+<h3><span class="header-section-number">9.3.6</span> Minimum QC<a href="patterns-and-templates.html#minimum-qc-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>CU output starts at expected analysis years (typically 1998+)</li>
+<li>CU-level uniqueness by <code>(CU_ID, Year)</code></li>
+<li>Pop-level <code>Pop_ID</code> coverage reviewed for unmatched names</li>
+<li>Recruit columns checked for expected NA windows in terminal years</li>
+</ul>
+</div>
+<div id="escalate-if-1" class="section level3 hasAnchor" number="9.3.7">
+<h3><span class="header-section-number">9.3.7</span> Escalate if<a href="patterns-and-templates.html#escalate-if-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>large shifts in hatchery vs natural components are unexplained</li>
+<li>key tributary naming/crosswalks no longer match lookup rules</li>
+</ul>
+<hr />
+</div>
+</div>
+<div id="pattern-card-3-lower-fraser-chum-major-system-aggregate" class="section level2 hasAnchor" number="9.4">
+<h2><span class="header-section-number">9.4</span> Pattern Card 3 — Lower Fraser Chum (major-system aggregate)<a href="patterns-and-templates.html#pattern-card-3-lower-fraser-chum-major-system-aggregate" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="use-when-2" class="section level3 hasAnchor" number="9.4.1">
+<h3><span class="header-section-number">9.4.1</span> Use when<a href="patterns-and-templates.html#use-when-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Species is Lower Fraser Chum</li>
+<li>You need fast CU + pop outputs using major systems + extensive pivot</li>
+</ul>
+</div>
+<div id="repo-and-script-1" class="section level3 hasAnchor" number="9.4.2">
+<h3><span class="header-section-number">9.4.2</span> Repo and script<a href="patterns-and-templates.html#repo-and-script-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Repo: <code>FRCm-WSPDataPrep</code></li>
+<li>Script: <code>CODE/Prep7_Create Fraser Chum2.R</code></li>
+</ul>
+</div>
+<div id="required-inputs-2" class="section level3 hasAnchor" number="9.4.3">
+<h3><span class="header-section-number">9.4.3</span> Required inputs<a href="patterns-and-templates.html#required-inputs-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><code>DATA_IN/FR Chum Major Systems.csv</code></li>
+<li><code>DATA_IN/Harrison Chum Escapement Summary.csv</code></li>
+<li><code>DATA_IN/Chum extensive pivot.csv</code></li>
+<li><code>DATA_IN/FR Chum POPID Crosswalk.csv</code></li>
+</ul>
+</div>
+<div id="run-2" class="section level3 hasAnchor" number="9.4.4">
+<h3><span class="header-section-number">9.4.4</span> Run<a href="patterns-and-templates.html#run-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="patterns-and-templates.html#cb6-1" tabindex="-1"></a><span class="bu">cd</span> FRCm-WSPDataPrep</span>
+<span id="cb6-2"><a href="patterns-and-templates.html#cb6-2" tabindex="-1"></a><span class="ex">Rscript</span> <span class="st">&quot;CODE/Prep7_Create Fraser Chum2.R&quot;</span></span></code></pre></div>
+</div>
+<div id="expected-outputs-2" class="section level3 hasAnchor" number="9.4.5">
+<h3><span class="header-section-number">9.4.5</span> Expected outputs<a href="patterns-and-templates.html#expected-outputs-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><code>DATA_OUT/Cleaned_FlatFile_ByCU_FraserChum.csv</code></li>
+<li><code>DATA_OUT/Cleaned_FlatFile_ByPop_FraserChum_all.csv</code></li>
+</ul>
+</div>
+<div id="minimum-qc-2" class="section level3 hasAnchor" number="9.4.6">
+<h3><span class="header-section-number">9.4.6</span> Minimum QC<a href="patterns-and-templates.html#minimum-qc-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>CU year range aligns with known truncation (2002+ in current implementation)</li>
+<li>remove unnamed first column if present before downstream use</li>
+<li>pop-level row counts/missingness reviewed against prior release</li>
+</ul>
+<hr />
+</div>
+</div>
+<div id="pattern-card-4-fraser-pink-official-cu-series-historical-stream-layer" class="section level2 hasAnchor" number="9.5">
+<h2><span class="header-section-number">9.5</span> Pattern Card 4 — Fraser Pink (official CU series + historical stream layer)<a href="patterns-and-templates.html#pattern-card-4-fraser-pink-official-cu-series-historical-stream-layer" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="use-when-3" class="section level3 hasAnchor" number="9.5.1">
+<h3><span class="header-section-number">9.5.1</span> Use when<a href="patterns-and-templates.html#use-when-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Species is Fraser Pink</li>
+<li>You need CU series from official esc-rec source plus pop-level historical
+stream representation</li>
+</ul>
+</div>
+<div id="repo-and-script-2" class="section level3 hasAnchor" number="9.5.2">
+<h3><span class="header-section-number">9.5.2</span> Repo and script<a href="patterns-and-templates.html#repo-and-script-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Repo: <code>FRPink-WSPDataPrep</code></li>
+<li>Script: <code>CODE/Prep6_Create Fraser Pink_2.R</code></li>
+</ul>
+</div>
+<div id="required-inputs-3" class="section level3 hasAnchor" number="9.5.3">
+<h3><span class="header-section-number">9.5.3</span> Required inputs<a href="patterns-and-templates.html#required-inputs-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><code>DATA_IN/Fraser Pink esc_rec CU.csv</code></li>
+<li><code>DATA_IN/FR_Pink_Conservation_Unit_Data_NUSEDs_June 2023.csv</code></li>
+</ul>
+</div>
+<div id="run-3" class="section level3 hasAnchor" number="9.5.4">
+<h3><span class="header-section-number">9.5.4</span> Run<a href="patterns-and-templates.html#run-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="patterns-and-templates.html#cb7-1" tabindex="-1"></a><span class="bu">cd</span> FRPink-WSPDataPrep</span>
+<span id="cb7-2"><a href="patterns-and-templates.html#cb7-2" tabindex="-1"></a><span class="ex">Rscript</span> <span class="st">&quot;CODE/Prep6_Create Fraser Pink_2.R&quot;</span></span></code></pre></div>
+</div>
+<div id="expected-outputs-3" class="section level3 hasAnchor" number="9.5.5">
+<h3><span class="header-section-number">9.5.5</span> Expected outputs<a href="patterns-and-templates.html#expected-outputs-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><code>DATA_OUT/Cleaned_FlatFile_ByCU_FraserPink.csv</code></li>
+<li><code>DATA_OUT/Cleaned_FlatFile_ByPop_FraserPink_All_Nuseds.csv</code></li>
+</ul>
+</div>
+<div id="minimum-qc-3" class="section level3 hasAnchor" number="9.5.6">
+<h3><span class="header-section-number">9.5.6</span> Minimum QC<a href="patterns-and-templates.html#minimum-qc-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>CU years include latest run year</li>
+<li>remove unnamed first column if present before downstream use</li>
+<li>historical years and mainstem representation are both present in pop output</li>
+<li>expected NA behavior in trend/rec columns reviewed</li>
+</ul>
+<hr />
+</div>
+</div>
+<div id="template-bundle-use-with-any-pattern" class="section level2 hasAnchor" number="9.6">
+<h2><span class="header-section-number">9.6</span> Template bundle (use with any pattern)<a href="patterns-and-templates.html#template-bundle-use-with-any-pattern" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>For each run, store:</p>
+<ul>
+<li><code>run-log.md</code> — what you ran, when, with which files</li>
+<li><code>decision-log.md</code> — any deviations/exceptions and why</li>
+<li><code>qc-summary.md</code> — pass/fail checks with evidence links</li>
 </ul>
 
 </div>
@@ -229,7 +623,7 @@ for metrics on/off per CU)</li>
           </div>
         </div>
       </div>
-<a href="document-metadata-and-metric-specifications.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="step-6-metadata-and-metric-specifications.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="worked-examples.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
