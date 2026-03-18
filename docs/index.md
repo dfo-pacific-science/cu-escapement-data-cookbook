@@ -1,7 +1,7 @@
 ---
 title: "Salmon Escapement Data Guidebook"
 author: "DFO Pacific Region"
-date: "March 02, 2026"
+date: "March 17, 2026"
 site: bookdown::bookdown_site
 documentclass: book
 lang: en

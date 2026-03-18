@@ -4,30 +4,35 @@
 
 Treat each card as a **do-this-exactly** runbook for a common scenario.
 
-Each card includes:
+Each card tells you:
 
-- when to use it
-- required inputs
-- exact run steps
-- expected outputs
-- minimum QC checks
-- escalation triggers
+- when to use it,
+- which layers it produces,
+- which inputs are hard-coded or conditional,
+- which intermediate artifacts must be reviewed,
+- what to escalate.
 
 ---
 
-## Pattern Card 1 — Fraser Sockeye (direct sum + targeted gap fills)
+## Pattern Card 1 — Fraser Sockeye (dual stream layers + targeted gap fills)
 
 ### Use when
 
 - Species is Fraser Sockeye
-- You need CU and pop flat files aligned with existing SoS/WSP practice
-- You need built-in handling for known gap-fill pathways (e.g., Quesnel,
-  Shuswap, Takla-Trem, Nahatlatch)
+- You need CU outputs plus pop/context outputs aligned with current production
+  practice
+- You expect CU-specific gap-fill logic and decoder-heavy matching
 
 ### Repo and script
 
 - Repo: `FRSK-WSPDataPrep`
 - Script: `CODE/Prep4_CleanedFlatFile_Fraser_Sk_KDEdits2024.R`
+
+### Key output layers
+
+- `cu_trend`
+- `cu_abundance`
+- `pop_representation`
 
 ### Required inputs
 
@@ -39,6 +44,12 @@ Each card includes:
 - `DATA_LOOKUP_FILES/MOD_MAIN_CU_LOOKUP_FOR_SOS.csv`
 - `DATA_LOOKUP_FILES/Site_Info_GeneratedDecoder_Fraser_Sk.csv`
 
+### Important notes before run
+
+- Check whether the script expects literal file names.
+- Keep trend-layer and abundance-layer stream lists distinct.
+- Open the exception register before running; you will probably need it.
+
 ### Run
 
 ```bash
@@ -46,34 +57,27 @@ cd FRSK-WSPDataPrep
 Rscript CODE/Prep4_CleanedFlatFile_Fraser_Sk_KDEdits2024.R
 ```
 
-### Expected outputs
+### Review these artifacts before release
 
-- `DATA_OUT/Cleaned_FlatFile_ByPop_FraserSockeye.csv`
-- `DATA_OUT/Cleaned_FlatFile_ByCU_FraserSockeye.csv`
 - `DATA_TRACKING/FraserSockeye_MatchingCheck.csv`
 - `DATA_TRACKING/Sites not in CUs.csv`
-
-### Minimum QC
-
-- CU-level uniqueness by `(CU_ID, Year)`
-- Year range reaches current update year
-- `Sites not in CUs.csv` reviewed and signed off
-- Manual exception years (e.g., Taseko/Birkenhead) documented in run log
+- CU-specific prep files in `DATA_TRACKING/FraserSockeyePrep/`
+- any manual suppression or gap-fill notes recorded in the run log
 
 ### Escalate if
 
-- CU totals fail plausibility checks against prior release
-- input stream naming changes break decoder joins
-- new missingness patterns appear in high-priority CUs
+- decoder joins break because stream names changed,
+- a high-priority CU changes method family,
+- the abundance and trend layers can no longer be explained cleanly.
 
 ---
 
-## Pattern Card 2 — Interior Fraser Coho (CU decomposition + brood-year outputs)
+## Pattern Card 2 — Interior Fraser Coho (WSP-only CU layer + all-stream pop layer)
 
 ### Use when
 
 - Species is Interior Fraser Coho
-- You need CU and pop outputs plus hatchery/natural decomposition flow
+- You need CU outputs, pop outputs, and brood-year / decomposition support
 
 ### Repo and scripts
 
@@ -82,13 +86,25 @@ Rscript CODE/Prep4_CleanedFlatFile_Fraser_Sk_KDEdits2024.R
   - `CODE/SUB_Data extraction and clean up (Coho for now)_2023.R`
   - `CODE/Prep5_CleanedFlatFile_Fraser_Coho.R`
 
+### Key output layers
+
+- `cu_trend`
+- `cu_abundance`
+- `pop_representation`
+
 ### Required inputs
 
 - latest `DATA_IN/IFC Data 1975-<year> ... for Salmon Scanner.csv`
-- `DATA_IN/IFC Infill exceptions.csv`
 - `DATA_IN/FRSK_CU_Info_masterUpdate.csv`
 - `DATA_IN/Fraser Coho POPID Lookup...csv`
 - `DATA_LOOKUP_FILES/MOD_MAIN_CU_LOOKUP_FOR_SOS.csv`
+- `DATA_IN/IFC Infill exceptions.csv` only if the active path actually uses it
+
+### Important notes before run
+
+- Document whether the CU layer is WSP-only and the pop layer is all-stream.
+- Confirm how `Final.Estimate.Type == "NO"` is treated.
+- Treat decomposition tables as QC evidence, not as optional extras.
 
 ### Run
 
@@ -97,32 +113,27 @@ cd FRCo-WSPDataPrep
 Rscript CODE/Prep5_CleanedFlatFile_Fraser_Coho.R
 ```
 
-### Expected outputs
+### Review these artifacts before release
 
-- `DATA_OUT/Cleaned_FlatFile_ByPop_FraserCoho.csv`
-- `DATA_OUT/Cleaned_FlatFile_ByCU_FraserCoho.csv`
+- `DATA_PROCESSING/Calc.Nat Table for <CU>.csv`
 - `DATA_PROCESSING/All IFC CUs BY Table_EC.max=NA_infill=FALSE.csv`
-
-### Minimum QC
-
-- CU output starts at expected analysis years (typically 1998+)
-- CU-level uniqueness by `(CU_ID, Year)`
-- Pop-level `Pop_ID` coverage reviewed for unmatched names
-- Recruit columns checked for expected NA windows in terminal years
+- any `Check.Natural.Returns` outputs or equivalent summaries
 
 ### Escalate if
 
-- large shifts in hatchery vs natural components are unexplained
-- key tributary naming/crosswalks no longer match lookup rules
+- tributary names stop matching the POPID crosswalk,
+- natural versus hatchery components shift sharply without explanation,
+- the pop layer stops being intentionally broader than the CU layer.
 
 ---
 
-## Pattern Card 3 — Lower Fraser Chum (major-system aggregate)
+## Pattern Card 3 — Lower Fraser Chum (major-system CU layer with expected CU/pop non-equality)
 
 ### Use when
 
 - Species is Lower Fraser Chum
-- You need fast CU + pop outputs using major systems + extensive pivot
+- You need the production CU layer and pop representation built from major
+  systems and Harrison logic
 
 ### Repo and script
 
@@ -136,6 +147,12 @@ Rscript CODE/Prep5_CleanedFlatFile_Fraser_Coho.R
 - `DATA_IN/Chum extensive pivot.csv`
 - `DATA_IN/FR Chum POPID Crosswalk.csv`
 
+### Important notes before run
+
+- Do not expect CU totals to equal the sum of pop rows.
+- Review any row-name / unnamed-column CSV behaviour before downstream use.
+- Log the Harrison and Squawkum handling explicitly.
+
 ### Run
 
 ```bash
@@ -143,26 +160,27 @@ cd FRCm-WSPDataPrep
 Rscript "CODE/Prep7_Create Fraser Chum2.R"
 ```
 
-### Expected outputs
+### Review these artifacts before release
 
-- `DATA_OUT/Cleaned_FlatFile_ByCU_FraserChum.csv`
-- `DATA_OUT/Cleaned_FlatFile_ByPop_FraserChum_all.csv`
+- final CU and pop files,
+- any comparison showing Harrison decomposition,
+- run-log note explaining expected CU/pop non-equality.
 
-### Minimum QC
+### Escalate if
 
-- CU year range aligns with known truncation (2002+ in current implementation)
-- remove unnamed first column if present before downstream use
-- pop-level row counts/missingness reviewed against prior release
+- the non-equality pattern cannot be explained,
+- unnamed first columns break downstream import,
+- year truncation changes relative to the prior release.
 
 ---
 
-## Pattern Card 4 — Fraser Pink (official CU series + historical stream layer)
+## Pattern Card 4 — Fraser Pink (official CU series + historical context layer)
 
 ### Use when
 
 - Species is Fraser Pink
-- You need CU series from official esc-rec source plus pop-level historical
-  stream representation
+- You need the official CU series plus the historical NuSEDS-based pop/context
+  layer
 
 ### Repo and script
 
@@ -174,6 +192,12 @@ Rscript "CODE/Prep7_Create Fraser Chum2.R"
 - `DATA_IN/Fraser Pink esc_rec CU.csv`
 - `DATA_IN/FR_Pink_Conservation_Unit_Data_NUSEDs_June 2023.csv`
 
+### Important notes before run
+
+- Keep the official CU series authoritative across the whole time series.
+- Treat the historical NuSEDS layer as context, not as a replacement CU series.
+- Review the Fraser aggregate pop row separately from ordinary pop rows.
+
 ### Run
 
 ```bash
@@ -181,24 +205,45 @@ cd FRPink-WSPDataPrep
 Rscript "CODE/Prep6_Create Fraser Pink_2.R"
 ```
 
-### Expected outputs
+### Review these artifacts before release
 
-- `DATA_OUT/Cleaned_FlatFile_ByCU_FraserPink.csv`
-- `DATA_OUT/Cleaned_FlatFile_ByPop_FraserPink_All_Nuseds.csv`
+- final CU and pop files,
+- a year-transition check around the pre-1993 historical layer,
+- confirmation that the Fraser aggregate row retains expected `NA` trend fields.
 
-### Minimum QC
+### Escalate if
 
-- CU years include latest run year
-- remove unnamed first column if present before downstream use
-- historical years and mainstem representation are both present in pop output
-- expected NA behavior in trend/rec columns reviewed
+- the official CU series appears to be overwritten by stream sums,
+- the historical transition years cannot be explained,
+- the Fraser aggregate row loses its special semantics.
 
 ---
 
-## Template bundle (use with any pattern)
+## Pattern Card 5 — CU/WSP bundle handoff
 
-For each run, store:
+### Use when
 
-- `run-log.md` — what you ran, when, with which files
-- `decision-log.md` — any deviations/exceptions and why
-- `qc-summary.md` — pass/fail checks with evidence links
+- final CU outputs passed release QC,
+- you need a stable handoff for metrics, packaging, or another consumer.
+
+### Required inputs
+
+- `cu_timeseries.csv`
+- `wsp_metric_specs.csv`
+- optional `wsp_cyclic_benchmarks.csv`
+- optional `cu_metadata.csv`
+- sidecars: `run-log.md`, `decision-log.md`, `qc-summary.md`, `metadata_notes.md`
+
+### Minimum QC before handoff
+
+- CU/spec alignment checked,
+- intentional `NA` patterns documented,
+- exception register reviewed,
+- intermediate QC artifacts linked from the summary.
+
+### Handoff outputs
+
+- status-ready bundle,
+- optional Salmon Data Package,
+- optional derived consumer bridge.
+

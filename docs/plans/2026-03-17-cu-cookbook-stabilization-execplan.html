@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>CU Escapement Data Cookbook Stabilization + SPSR Handoff ExecPlan</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">CU Escapement Data Cookbook Stabilization + SPSR
+Handoff ExecPlan</h1>
+</header>
+<h1
+id="cu-escapement-data-cookbook-stabilization-spsr-handoff-execplan">2026-03-17
+— CU Escapement Data Cookbook Stabilization + SPSR Handoff ExecPlan</h1>
+<p>This ExecPlan is a living document. Keep <code>Progress</code>,
+<code>Decision Log</code>, <code>Stable-state gates</code>, and
+<code>Outcomes</code> current as work proceeds.</p>
+<h2 id="purpose-big-picture">Purpose / Big Picture</h2>
+<p>Stabilize the <strong>CU Escapement Data Cookbook</strong> by the end
+of this week so it becomes the clear human-facing contract for:</p>
+<ol type="1">
+<li>how analysts build CU escapement outputs,</li>
+<li>which QC artifacts prove the outputs are trustworthy,</li>
+<li>how those outputs feed downstream WSP metrics/status workflows,
+and</li>
+<li>how the same outputs can be wrapped as <strong>CU Salmon Data
+Packages</strong> and bridged into <strong>SPSR</strong> composite
+upload workflows.</li>
+</ol>
+<p>The target is not just “more content.” The target is a cookbook that
+is: - easy for a biologist to follow, - explicit about hidden
+assumptions and exceptions, - stable enough to hand off across repos and
+analysts, - aligned with the longer-term <strong>Salmon Data Package +
+ontology + SPSR</strong> direction.</p>
+<h2 id="map">Map</h2>
+<h3 id="problem-type">Problem type</h3>
+<p>Cross-repo contract stabilization across documentation, data
+packaging, and downstream upload integration.</p>
+<h3 id="decision-needed">Decision needed</h3>
+<ol type="1">
+<li>What is the canonical analytical bundle produced by the
+cookbook?</li>
+<li>What role should the Salmon Data Package (SDP) play now vs
+later?</li>
+<li>How should cookbook outputs feed SPSR composite upload without
+making SPSR the cookbook’s canonical source of truth?</li>
+<li>Which helpers belong in <code>metasalmon</code>,
+<code>WSP-Metrics-Pkg</code>, species repos, or a later thin utilities
+package?</li>
+</ol>
+<h3 id="conflicting-models-to-harmonize">Conflicting models to
+harmonize</h3>
+<ul>
+<li><strong>Species prep repos</strong>: practical, production-tested,
+but inconsistent and full of local assumptions</li>
+<li><strong>WSP metrics/status repos</strong>: downstream compute
+contract, but with some doc/file drift</li>
+<li><strong>Salmon Data Package / metasalmon</strong>: packaging +
+metadata + semantics layer</li>
+<li><strong>SPSR composite upload</strong>: consumer-specific CUYear
+ingestion path and roundtrip contract</li>
+</ul>
+<h3 id="stakeholders">Stakeholders</h3>
+<ul>
+<li>Brett / DSU (overall architecture + delivery)</li>
+<li>species analysts maintaining Fraser and related prep pipelines</li>
+<li>WSP metrics/status maintainers</li>
+<li><code>metasalmon</code> / SDP maintainers</li>
+<li>SPSR maintainers and downstream upload users</li>
+</ul>
+<h2 id="stable-state-principle">Stable-state principle</h2>
+<p>At every slice, leave the system in a state where:</p>
+<ol type="1">
+<li>the cookbook still reads cleanly,</li>
+<li>one source of truth is obvious,</li>
+<li>deferred work is explicit rather than hidden,</li>
+<li>the next step can be picked up without re-deriving the
+architecture.</li>
+</ol>
+<h2 id="progress">Progress</h2>
+<ul class="task-list">
+<li><label><input type="checkbox" checked="" />Canonical source
+inventory shifted to <code>library/wsp-fisheries/sources.yaml</code>;
+duplicate cookbook <code>sources.md</code> removed.</label></li>
+<li><label><input type="checkbox" checked="" />Rapid status
+worked-example repo reference updated to
+<code>SOLV-Code/WSP-Rapid-Status-WorkedExamples</code>.</label></li>
+<li><label><input type="checkbox" checked="" />Cross-repo review sweep
+completed for:</label>
+<ul>
+<li>species prep pipelines,</li>
+<li>metadata/site-selection patterns,</li>
+<li>WSP metrics/status tooling,</li>
+<li>advanced methods,</li>
+<li>harmonization architecture.</li>
+</ul></li>
+<li><label><input type="checkbox" checked="" />This ExecPlan created in
+the cookbook repo.</label></li>
+<li><label><input type="checkbox" checked="" />Add appendix link in the
+rendered guidebook.</label></li>
+<li><label><input type="checkbox" checked="" />Update core guidebook
+chapters to reflect the stabilized contract.</label></li>
+<li><label><input type="checkbox" checked="" />Add explicit SPSR
+composite-upload bridge section to this plan and the guidebook
+appendix.</label></li>
+<li><label><input type="checkbox" checked="" />Validate rendered
+guidebook for readability / concision.</label></li>
+<li><label><input type="checkbox" />Commit and push to <code>main</code>
+once the guidebook reads cleanly.</label></li>
+<li><label><input type="checkbox" checked="" />(2026-03-17) Merge the
+chapter-level contract rewrite back into the main cookbook repo and
+preserve the in-repo ExecPlan as a tracked artifact.</label></li>
+</ul>
+<h2 id="decision-log">Decision Log</h2>
+<ul>
+<li>Decision: <code>library/wsp-fisheries/sources.yaml</code> is the
+canonical repo/source inventory; the cookbook should not keep a second
+full source-of-truth list.
+<ul>
+<li>Rationale: duplicate source inventories drift immediately.</li>
+</ul></li>
+<li>Decision: treat
+<code>SOLV-Code/WSP-Rapid-Status-WorkedExamples</code> as the current
+canonical worked-example repo for rapid status material.
+<ul>
+<li>Rationale: it is materially more current than the
+<code>Pacific-salmon-assess</code> copy.</li>
+</ul></li>
+<li>Decision: use <strong>one bundle, two layers</strong>.
+<ul>
+<li>Analytical layer = small WSP/CU table bundle.</li>
+<li>Packaging layer = Salmon Data Package wrapping that bundle.</li>
+<li>Rationale: keeps daily workflow simple while preserving long-term
+interoperability.</li>
+</ul></li>
+<li>Decision: the cookbook’s human-facing contract should not be
+identical to whatever current repos happen to emit.
+<ul>
+<li>Rationale: production repos contain local drift, CSV hygiene issues,
+and hidden assumptions.</li>
+</ul></li>
+<li>Decision: <code>WSP-Metrics-Pkg</code> remains the compute engine,
+not the cross-repo workflow kitchen sink.
+<ul>
+<li>Rationale: keep compute responsibilities separate from
+normalization/packaging/provenance.</li>
+</ul></li>
+<li>Decision: SPSR upload shape is a <strong>consumer bridge</strong>,
+not the cookbook’s canonical analytical model.
+<ul>
+<li>Rationale: the cookbook should not let one downstream system distort
+the general bundle contract.</li>
+<li>Note: SPSR’s bulk/package route still needs broader route coverage
+(at least CU/composite, SMU, and Population), but the cookbook remains
+focused on the CU/composite bundle that it actually authors.</li>
+</ul></li>
+</ul>
+<h2 id="target-end-state-for-this-week">Target end-state for this
+week</h2>
+<p>By end of week, the stable state should be:</p>
+<ol type="1">
+<li><strong>Cookbook</strong> clearly defines the operational CU/WSP
+bundle and required QC.</li>
+<li><strong>Appendix</strong> links to this plan and the key downstream
+contracts.</li>
+<li><strong>SDP role</strong> is explicit: release/handoff envelope, not
+authoring burden.</li>
+<li><strong>Ontology role</strong> is explicit: selective, useful
+semantics only.</li>
+<li><strong>SPSR bridge</strong> is explicit: cookbook package → derived
+SPSR composite-upload artifacts.</li>
+<li><strong>Next implementation path</strong> is externalized for
+<code>metasalmon</code>, <code>WSP-Metrics-Pkg</code>, and SPSR.</li>
+</ol>
+<h2
+id="canonical-bundle-contract-to-stabilize-in-the-cookbook">Canonical
+bundle contract to stabilize in the cookbook</h2>
+<h3 id="core-analytical-tables">Core analytical tables</h3>
+<p>These should become the named, repeatable cookbook bundle:</p>
+<ul>
+<li><code>cu_timeseries</code></li>
+<li><code>wsp_metric_specs</code></li>
+<li>optional <code>wsp_cyclic_benchmarks</code></li>
+<li>recommended <code>cu_metadata</code></li>
+<li>optional <code>published_integrated_statuses</code></li>
+</ul>
+<h3 id="required-sidecars">Required sidecars</h3>
+<p>These stay human-readable and should <strong>not</strong> be forced
+into ontology-shaped tables:</p>
+<ul>
+<li><code>run-log.md</code></li>
+<li><code>decision-log.md</code></li>
+<li><code>qc-summary.md</code></li>
+<li><code>metadata_notes.md</code></li>
+</ul>
+<h3 id="core-rule">Core rule</h3>
+<p>The analytical bundle is the computational contract. The Salmon Data
+Package is the exchange envelope around that contract.</p>
+<h2 id="work-packages">Work packages</h2>
+<h2 id="wp-0-execplan-appendix-wiring">WP-0 — ExecPlan + appendix
+wiring</h2>
+<h3 id="goal">Goal</h3>
+<p>Make the execution path visible from inside the guidebook.</p>
+<h3 id="tasks">Tasks</h3>
+<ul>
+<li>Add appendix link to this ExecPlan.</li>
+<li>Keep the plan in <code>docs/plans/</code> so it ships with the
+rendered site.</li>
+<li>Add explicit note that this plan is the active stabilization path
+for the cookbook.</li>
+</ul>
+<h3 id="stable-state-gate">Stable-state gate</h3>
+<ul>
+<li>A reader can move from the appendix directly to the active
+plan.</li>
+<li>The plan is stored in the repo, not hidden in chat or memory.</li>
+</ul>
+<h3 id="next-step-after-gate">Next step after gate</h3>
+<p>Start direct chapter edits against a visible plan rather than
+free-floating discussion.</p>
+<h2 id="wp-1-core-guidebook-contract-rewrite">WP-1 — Core guidebook
+contract rewrite</h2>
+<h3 id="goal-1">Goal</h3>
+<p>Upgrade the cookbook from “script orchestration notes” to a stable
+human-facing contract.</p>
+<h3 id="priority-chapters">Priority chapters</h3>
+<ul>
+<li><code>02-getting-started.Rmd</code></li>
+<li><code>04-site-survey-selection.Rmd</code></li>
+<li><code>06-record-processing.Rmd</code></li>
+<li><code>07-estimation.Rmd</code></li>
+<li><code>08-metadata-and-metric-specs.Rmd</code></li>
+<li><code>10-worked-examples.Rmd</code></li>
+<li><code>11-checklists-and-decision-trees.Rmd</code></li>
+<li><code>12-appendix.Rmd</code></li>
+</ul>
+<h3 id="content-upgrades-required">Content upgrades required</h3>
+<ul>
+<li>distinguish data layers explicitly (CU vs pop vs historical context
+vs downstream status tables)</li>
+<li>surface hidden exception logic through an exception register
+pattern</li>
+<li>promote intermediate QC artifacts to first-class outputs</li>
+<li>define real WSP bundle outputs rather than vague “metric-ready”
+prose</li>
+<li>rewrite worked examples around non-trivial review cases, not just
+runnable scripts</li>
+</ul>
+<h3 id="stable-state-gate-1">Stable-state gate</h3>
+<ul>
+<li>A biologist can identify: what they are producing, what assumptions
+shape it, and what files prove it passed review.</li>
+</ul>
+<h3 id="next-step-after-gate-1">Next step after gate</h3>
+<p>Formalize the bundle profile and its QC rules.</p>
+<h2 id="wp-2-bundle-profile-qc-hardening">WP-2 — Bundle profile + QC
+hardening</h2>
+<h3 id="goal-2">Goal</h3>
+<p>Freeze the minimum bundle contract used between cookbook outputs and
+downstream WSP status tooling.</p>
+<h3 id="must-document">Must document</h3>
+<ul>
+<li>file/table names</li>
+<li>minimum required columns and optional fields</li>
+<li><code>*_Wild</code> vs <code>*_Total</code> semantics</li>
+<li>cyclic benchmark requirements</li>
+<li>alignment checks between time-series and metric specs</li>
+<li>vocabulary/value checks (<code>Abs_Abd</code>, <code>RelIdx</code>,
+status/confidence values, etc.)</li>
+</ul>
+<h3 id="stable-state-gate-2">Stable-state gate</h3>
+<ul>
+<li>A reviewer can reject or accept a bundle using explicit checks
+rather than repo folklore.</li>
+</ul>
+<h3 id="next-step-after-gate-2">Next step after gate</h3>
+<p>Wrap the same bundle in a Salmon Data Package profile.</p>
+<h2 id="wp-3-salmon-data-package-ontology-boundary">WP-3 — Salmon Data
+Package + ontology boundary</h2>
+<h3 id="goal-3">Goal</h3>
+<p>Make the SDP/ontology path explicit without burying the cookbook in
+semantic bureaucracy.</p>
+<h3 id="policy-to-document">Policy to document</h3>
+<ul>
+<li>SDP is the <strong>release/handoff envelope</strong>.</li>
+<li>Core analytical tables remain the authoring and compute
+contract.</li>
+<li>Use semantic IRIs now only for:
+<ul>
+<li>true measurement columns,</li>
+<li>important coded fields in <code>codes.csv</code>.</li>
+</ul></li>
+<li>Prefer <code>smn:</code> when a shared term exists.</li>
+<li>Use <code>gcdfo:</code> for DFO/WSP-specific constructs.</li>
+<li>Do <strong>not</strong> force I-ADOPT decomposition onto config
+flags, admin columns, or freeform QC notes.</li>
+</ul>
+<h3 id="stable-state-gate-3">Stable-state gate</h3>
+<ul>
+<li>The cookbook has a credible path to interoperable packaging, but
+still reads like a field manual.</li>
+</ul>
+<h3 id="next-step-after-gate-3">Next step after gate</h3>
+<p>Tie the release package to SPSR ingestion needs.</p>
+<h2 id="wp-4-spsr-composite-upload-bridge">WP-4 — SPSR composite-upload
+bridge</h2>
+<h3 id="goal-4">Goal</h3>
+<p>Define the cleanest bridge from cookbook outputs to SPSR without
+making SPSR the canonical model.</p>
+<h3 id="current-reality-to-respect">Current reality to respect</h3>
+<ul>
+<li>SPSR composite route already behaves as a <strong>CU-level</strong>
+upload path (<code>data_level=CU</code>).</li>
+<li>SPSR composite route expects CUYear-style time-series + metadata
+files and WSP-capable headers / aliases.</li>
+<li>SPSR active roundtrip package contract
+<code>spsr.bulk.roundtrip.v1</code> currently <strong>excludes
+composite</strong> from the v1 exported bundle scope.</li>
+</ul>
+<h3 id="recommended-bridge-architecture">Recommended bridge
+architecture</h3>
+<h4 id="canonical-cookbook-outputs">Canonical cookbook outputs</h4>
+<ul>
+<li><code>cu_timeseries</code></li>
+<li><code>wsp_metric_specs</code></li>
+<li>optional <code>wsp_cyclic_benchmarks</code></li>
+<li><code>cu_metadata</code></li>
+<li>sidecars (<code>run-log.md</code>, <code>decision-log.md</code>,
+<code>qc-summary.md</code>, <code>metadata_notes.md</code>)</li>
+</ul>
+<h4 id="release-package">Release package</h4>
+<ul>
+<li>Salmon Data Package containing the canonical bundle +
+metadata/dictionary/codes + sidecars</li>
+</ul>
+<h4 id="preferred-spsr-target-model">Preferred SPSR target model</h4>
+<ul>
+<li>SPSR should grow a <strong>package-first CU Salmon Data Package
+intake mode</strong> for cookbook-origin composite/WSP deliveries.</li>
+<li>In that model, SPSR reads the package directly, prefills
+metadata/review state, and performs the CU bundle → <code>CUYear</code>
+mapping internally.</li>
+<li>This keeps contributors from having to unpack or hand-manage
+SPSR-specific bridge files.</li>
+</ul>
+<h4 id="spsr-bridge-export-derived-consumer-specific">SPSR bridge export
+(derived, consumer-specific)</h4>
+<p>Until package-first SPSR intake exists, generate a derived SPSR-ready
+pair from the canonical bundle: - <code>data/cuyear.csv</code> -
+<code>data/cu_metadata.csv</code></p>
+<p>with: - SPSR-compatible headers / aliases, - composite-route
+provenance note, - explicit route target = <code>composite</code>, -
+recognition that SPSR persists composite as
+<code>data_level=CU</code>.</p>
+<h3 id="this-weeks-stable-decision">This week’s stable decision</h3>
+<p>For this week: - treat <strong>package-first SPSR intake</strong> as
+the preferred target architecture, - treat the <strong>SPSR bulk upload
+route</strong> as the place that should converge on that package-first
+CU Salmon Data Package contract, - treat <strong>SPSR bridge
+export</strong> as the operational fallback handoff until that
+package-first route exists, - do <strong>not</strong> block cookbook
+stabilization on SPSR adding composite to the active v1 roundtrip export
+contract.</p>
+<h3 id="follow-on-spsr-decision">Follow-on SPSR decision</h3>
+<p>SPSR should now aim to: 1. implement package-first Salmon Data
+Package intake for cookbook-origin composite/WSP deliveries <strong>on
+the bulk upload route</strong>, 2. make sure that same bulk/package
+route also supports at least SMU and Population package lanes, 3. keep
+direct CSV wizard upload as compatibility mode, and 4. then decide
+whether composite support lands as an extension of
+<code>spsr.bulk.roundtrip.v1</code> or as an explicit v2 contract.</p>
+<h3 id="stable-state-gate-4">Stable-state gate</h3>
+<ul>
+<li>No one has to guess whether cookbook outputs can feed SPSR.</li>
+<li>The answer is explicit: canonical bundle first, derived SPSR bridge
+second.</li>
+</ul>
+<h3 id="next-step-after-gate-4">Next step after gate</h3>
+<p>Externalize required helper functions and contract tests.</p>
+<h2 id="key-external-references">Key external references</h2>
+<ul>
+<li>SPSR roundtrip package contract:
+<ul>
+<li><code>/Users/alan/.openclaw/workspace/code/salmon-population-summary-repository/docs/contracts/spsr-roundtrip-package-contract-v1.md</code></li>
+</ul></li>
+<li>SPSR integrated route contract / composite route behavior:
+<ul>
+<li><code>/Users/alan/.openclaw/workspace/code/salmon-population-summary-repository/demo/wizard_route_contract.py</code></li>
+<li><code>/Users/alan/.openclaw/workspace/code/salmon-population-summary-repository/docs/entrypoints.md</code></li>
+</ul></li>
+<li>WSP composite → CUYear semantic mapping:
+<ul>
+<li><code>/Users/alan/.openclaw/workspace/code/salmon-population-summary-repository/docs/wsp-cuyear-semantic-mapping.md</code></li>
+</ul></li>
+<li>SPSR production umbrella plan:
+<ul>
+<li><code>/Users/alan/.openclaw/workspace/code/salmon-population-summary-repository/docs/plans/2026-02-18-spsr-production-ready-unified-execplan.md</code></li>
+</ul></li>
+<li>SPSR package-first CU SDP intake model:
+<ul>
+<li><code>/Users/alan/.openclaw/workspace/code/salmon-population-summary-repository/docs/plans/2026-03-17-package-first-cu-sdp-intake-model.md</code></li>
+</ul></li>
+<li>Salmon Data Package specification:
+<ul>
+<li><code>/Users/alan/.openclaw/workspace/code/smn-data-pkg/SPECIFICATION.md</code></li>
+</ul></li>
+<li><code>metasalmon</code> package home:
+<ul>
+<li><code>/Users/alan/.openclaw/workspace/code/metasalmon</code></li>
+</ul></li>
+</ul>
+<h2 id="wp-5-reusable-helper-implementation-path">WP-5 — Reusable helper
+implementation path</h2>
+<h3 id="goal-5">Goal</h3>
+<p>Externalize the normalization / validation / packaging layer into
+code, without wrecking package boundaries.</p>
+<h3 id="first-stop-package-home">First-stop package home</h3>
+<p>Add thin helpers to <code>metasalmon</code> first, then split later
+only if the boundary becomes awkward.</p>
+<h3 id="candidate-helpers">Candidate helpers</h3>
+<ul>
+<li><code>validate_cu_series()</code></li>
+<li><code>validate_pop_series()</code></li>
+<li><code>validate_wsp_metric_specs()</code></li>
+<li><code>validate_wsp_bundle_alignment()</code></li>
+<li><code>build_qc_summary()</code></li>
+<li><code>build_run_manifest()</code></li>
+<li><code>wrap_cu_status_bundle()</code></li>
+<li><code>export_release_sdp()</code></li>
+<li><code>export_spsr_composite_bridge()</code></li>
+</ul>
+<h3 id="keep-out-of-scope-for-now">Keep out of scope for now</h3>
+<ul>
+<li>species-specific infill logic</li>
+<li>Fraser-specific estimation rules</li>
+<li>hidden exception logic masquerading as “generic” package code</li>
+</ul>
+<h3 id="stable-state-gate-5">Stable-state gate</h3>
+<ul>
+<li>Package responsibilities are clear enough that future implementation
+does not require re-arguing the architecture.</li>
+</ul>
+<h3 id="next-step-after-gate-5">Next step after gate</h3>
+<p>Implement the smallest useful helpers in <code>metasalmon</code> and
+thin validators in <code>WSP-Metrics-Pkg</code>.</p>
+<h2 id="risks-anti-patterns-to-avoid">Risks / anti-patterns to
+avoid</h2>
+<ul>
+<li>Creating duplicate source inventories again.</li>
+<li>Treating current repo outputs as normative just because they already
+exist.</li>
+<li>Letting SPSR file shapes become the cookbook’s canonical analytical
+model.</li>
+<li>Forcing ontology detail onto fields where it adds pain but no
+clarity.</li>
+<li>Trying to genericize local Fraser exception logic into a fake
+universal framework.</li>
+<li>Adding a vague “salmon utilities” package that becomes a junk
+drawer.</li>
+</ul>
+<h2 id="concrete-deliverables-for-this-repo">Concrete deliverables for
+this repo</h2>
+<ol type="1">
+<li>This ExecPlan in <code>docs/plans/</code>.</li>
+<li>Appendix link to this plan.</li>
+<li>Chapter edits reflecting:
+<ul>
+<li>explicit data layers,</li>
+<li>explicit WSP bundle contract,</li>
+<li>stronger QC,</li>
+<li>worked examples based on real review decisions,</li>
+<li>SDP/SPSR bridge explanation.</li>
+</ul></li>
+<li>Rendered guidebook refresh in <code>docs/</code>.</li>
+</ol>
+<h2 id="sequenced-clean-stop-points">Sequenced clean stop points</h2>
+<ol type="1">
+<li><strong>Planning lock</strong>
+<ul>
+<li>cookbook exec plan, SPSR exec plans, and SDP spec all point at the
+same architecture</li>
+</ul></li>
+<li><strong>Spec/layout lock</strong>
+<ul>
+<li>SDP spec, <code>metasalmon</code>, and example package all agree on
+canonical <code>metadata/</code> + <code>data/</code> layout</li>
+</ul></li>
+<li><strong>Cookbook contract lock</strong>
+<ul>
+<li>guidebook names the canonical CU/WSP bundle, required QC, and the
+SDP boundary cleanly</li>
+</ul></li>
+<li><strong>SPSR target lock</strong>
+<ul>
+<li>plans clearly state that the bulk upload route should become the
+package-first route-scoped SDP intake path, with cookbook work using the
+CU/composite subset first</li>
+</ul></li>
+<li><strong>Bridge fallback lock</strong>
+<ul>
+<li>until package-first intake ships, the cookbook documents the derived
+SPSR bridge as fallback rather than pretending the long-term model is
+already done</li>
+</ul></li>
+<li><strong>Guidebook rewrite lock</strong>
+<ul>
+<li>chapter-level edits land and the guidebook reads cleanly for a
+biologist</li>
+</ul></li>
+<li><strong>Implementation lock</strong>
+<ul>
+<li>next package/code slices in <code>metasalmon</code>,
+<code>WSP-Metrics-Pkg</code>, and SPSR can proceed without re-arguing
+the architecture</li>
+</ul></li>
+</ol>
+<p>Each stop point should be shippable and understandable on its own, so
+if work pauses after any step the next maintainer inherits a coherent
+state rather than a half-explained one.</p>
+<h2 id="validation-and-acceptance">Validation and acceptance</h2>
+<p>This slice is accepted when all of the following are true:</p>
+<ol type="1">
+<li>The appendix links to this plan.</li>
+<li>The guidebook clearly names the core bundle and required QC
+artifacts.</li>
+<li>The guidebook explains SDP as the release envelope, not the
+day-to-day authoring burden.</li>
+<li>The guidebook explains the SPSR bridge as a derived consumer
+export.</li>
+<li>The rendered guidebook reads cleanly enough for a biologist and
+stays concise.</li>
+</ol>
+<h2 id="outcomes">Outcomes</h2>
+<p>Pending. Update this section as concrete slices ship.</p>
+</body>
+</html>
