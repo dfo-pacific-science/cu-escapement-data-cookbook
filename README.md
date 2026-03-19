@@ -21,6 +21,7 @@ install.packages("bookdown")
 - `_bookdown.yml` — book metadata and chapter ordering (outputs to `docs/` for Pages).
 - `_output.yml` — output formats (gitbook, PDF, EPUB) and basic config.
 - `index.Rmd` — preface/front-matter.
+- `scripts/` — helper scripts used by cookbook workflows (for example, SPSR package pre-flight validation).
 - `01-*.Rmd` — numbered cookbook chapters. Current structure:
   - `01-introduction.Rmd`
   - `02-getting-started.Rmd`

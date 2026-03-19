@@ -247,3 +247,20 @@ Rscript "CODE/Prep6_Create Fraser Pink_2.R"
 - optional Salmon Data Package,
 - optional derived consumer bridge.
 
+### If the handoff is an SPSR package route
+
+- build or refresh the Salmon Data Package **after** the canonical bundle passes QC,
+- run the cookbook pre-flight helper before deriving wizard or bulk upload files,
+- use the same validated package as the source for any downstream SPSR upload shape.
+
+```bash
+Rscript scripts/validate_spsr_package.R path/to/salmon-data-package
+```
+
+Use `--require-iris` once the measurement semantics are finalized and missing
+IRIs should fail validation.
+
+```bash
+Rscript scripts/validate_spsr_package.R path/to/salmon-data-package --require-iris
+```
+
